@@ -52,10 +52,10 @@ export const HomeLandingHub: React.FC<HomeLandingHubProps> = ({
             {/* Card 1: Services Catalog */}
             <div 
               onClick={() => onNavigate('services')}
-              className="bg-[#14141A] rounded-2xl p-6 border border-stone-800 shadow-lg hover:shadow-xl hover:border-[#DE1B76]/50 transition-all flex flex-col justify-between group cursor-pointer"
+              className="bg-[#14141A] hover:bg-[#1A1A22] rounded-2xl p-6 border border-stone-800 shadow-lg hover:shadow-2xl hover:shadow-[#DE1B76]/15 hover:border-[#DE1B76] hover:scale-[1.03] hover:-translate-y-1 active:scale-[0.98] transition-all duration-300 flex flex-col justify-between group cursor-pointer"
             >
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-stone-900 text-[#DE1B76] flex items-center justify-center group-hover:bg-[#DE1B76] group-hover:text-white transition-colors border border-stone-800">
+                <div className="w-12 h-12 rounded-xl bg-stone-900 text-[#DE1B76] flex items-center justify-center group-hover:bg-[#DE1B76] group-hover:text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 border border-stone-800">
                   <Flower2 className="w-6 h-6" />
                 </div>
                 <div className="space-y-1.5">
@@ -70,17 +70,17 @@ export const HomeLandingHub: React.FC<HomeLandingHubProps> = ({
 
               <div className="pt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#DE1B76] group-hover:text-white transition-colors">
                 <span>View Full Menu & Prices</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
               </div>
             </div>
 
             {/* Card 2: Skincare Boutique */}
             <div 
               onClick={() => onNavigate('products')}
-              className="bg-[#14141A] rounded-2xl p-6 border border-stone-800 shadow-lg hover:shadow-xl hover:border-[#DE1B76]/50 transition-all flex flex-col justify-between group cursor-pointer"
+              className="bg-[#14141A] hover:bg-[#1A1A22] rounded-2xl p-6 border border-stone-800 shadow-lg hover:shadow-2xl hover:shadow-[#DE1B76]/15 hover:border-[#DE1B76] hover:scale-[1.03] hover:-translate-y-1 active:scale-[0.98] transition-all duration-300 flex flex-col justify-between group cursor-pointer"
             >
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-stone-900 text-[#DE1B76] flex items-center justify-center group-hover:bg-[#DE1B76] group-hover:text-white transition-colors border border-stone-800">
+                <div className="w-12 h-12 rounded-xl bg-stone-900 text-[#DE1B76] flex items-center justify-center group-hover:bg-[#DE1B76] group-hover:text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 border border-stone-800">
                   <ShoppingBag className="w-6 h-6" />
                 </div>
                 <div className="space-y-1.5">
@@ -95,17 +95,17 @@ export const HomeLandingHub: React.FC<HomeLandingHubProps> = ({
 
               <div className="pt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#DE1B76] group-hover:text-white transition-colors">
                 <span>Shop Skincare Line</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
               </div>
             </div>
 
             {/* Card 3: Photo Album */}
             <div 
               onClick={() => onNavigate('gallery')}
-              className="bg-[#14141A] rounded-2xl p-6 border border-stone-800 shadow-lg hover:shadow-xl hover:border-[#DE1B76]/50 transition-all flex flex-col justify-between group cursor-pointer"
+              className="bg-[#14141A] hover:bg-[#1A1A22] rounded-2xl p-6 border border-stone-800 shadow-lg hover:shadow-2xl hover:shadow-[#DE1B76]/15 hover:border-[#DE1B76] hover:scale-[1.03] hover:-translate-y-1 active:scale-[0.98] transition-all duration-300 flex flex-col justify-between group cursor-pointer"
             >
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-stone-900 text-[#DE1B76] flex items-center justify-center group-hover:bg-[#DE1B76] group-hover:text-white transition-colors border border-stone-800">
+                <div className="w-12 h-12 rounded-xl bg-stone-900 text-[#DE1B76] flex items-center justify-center group-hover:bg-[#DE1B76] group-hover:text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 border border-stone-800">
                   <Camera className="w-6 h-6" />
                 </div>
                 <div className="space-y-1.5">
@@ -120,17 +120,17 @@ export const HomeLandingHub: React.FC<HomeLandingHubProps> = ({
 
               <div className="pt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#DE1B76] group-hover:text-white transition-colors">
                 <span>View Photo Gallery</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
               </div>
             </div>
 
             {/* Card 4: Book Appointment */}
             <div 
               onClick={() => onOpenBooking()}
-              className="bg-gradient-to-br from-[#1E1218] to-[#13131A] text-white rounded-2xl p-6 border border-[#DE1B76]/40 shadow-lg hover:shadow-2xl hover:border-[#DE1B76] transition-all flex flex-col justify-between group cursor-pointer"
+              className="bg-gradient-to-br from-[#1E1218] to-[#13131A] text-white rounded-2xl p-6 border border-[#DE1B76]/40 shadow-lg hover:shadow-2xl hover:shadow-[#DE1B76]/30 hover:border-[#DE1B76] hover:scale-[1.03] hover:-translate-y-1 active:scale-[0.98] transition-all duration-300 flex flex-col justify-between group cursor-pointer"
             >
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-[#DE1B76]/20 text-[#DE1B76] flex items-center justify-center group-hover:bg-[#DE1B76] group-hover:text-white transition-colors border border-[#DE1B76]/30">
+                <div className="w-12 h-12 rounded-xl bg-[#DE1B76]/20 text-[#DE1B76] flex items-center justify-center group-hover:bg-[#DE1B76] group-hover:text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 border border-[#DE1B76]/30">
                   <Calendar className="w-6 h-6" />
                 </div>
                 <div className="space-y-1.5">
@@ -145,7 +145,7 @@ export const HomeLandingHub: React.FC<HomeLandingHubProps> = ({
 
               <div className="pt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#DE1B76] group-hover:text-white transition-colors">
                 <span>Start Booking</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" />
               </div>
             </div>
 
@@ -180,7 +180,7 @@ export const HomeLandingHub: React.FC<HomeLandingHubProps> = ({
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Phone className="w-4 h-4 text-[#DE1B76]" />
-                  <span className="font-mono">{SPA_INFO.phonePrimary} / {SPA_INFO.phoneSecondary}</span>
+                  <span className="font-mono">Call: {SPA_INFO.phoneCallFormatted} | WA: {SPA_INFO.phoneWhatsAppFormatted}</span>
                 </div>
               </div>
             </div>
@@ -188,18 +188,18 @@ export const HomeLandingHub: React.FC<HomeLandingHubProps> = ({
             <div className="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col gap-3 justify-end">
               <button
                 onClick={() => onNavigate('location')}
-                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-[#DE1B76] text-white px-5 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer shadow-xs min-h-[44px] border border-white/15"
+                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-[#DE1B76] active:scale-95 text-white px-5 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#DE1B76]/30 cursor-pointer shadow-xs min-h-[44px] border border-white/15 hover:border-transparent group"
               >
-                <MapPin className="w-4 h-4 text-[#DE1B76]" />
+                <MapPin className="w-4 h-4 text-[#DE1B76] group-hover:text-white transition-colors" />
                 <span>Full Directions & Schedule</span>
               </button>
 
               <button
                 onClick={onOpenWhatsAppModal}
-                className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white px-5 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-colors min-h-[44px] shadow-lg cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white px-5 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#25D366]/40 min-h-[44px] shadow-lg cursor-pointer group"
               >
-                <MessageCircle className="w-4 h-4 fill-white" />
-                <span>WhatsApp Line 1 & Line 2</span>
+                <MessageCircle className="w-4 h-4 fill-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" />
+                <span>Contact Desk (Call & WhatsApp)</span>
               </button>
             </div>
 

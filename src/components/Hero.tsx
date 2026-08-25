@@ -46,11 +46,11 @@ export const Hero: React.FC<HeroProps> = ({
               <button
                 type="button"
                 onClick={onNavigateToServices}
-                className="p-3.5 sm:p-4 rounded-2xl bg-[#17171F] hover:bg-[#20202B] border border-stone-800 hover:border-[#DE1B76]/40 shadow-sm text-left transition-all group cursor-pointer"
+                className="p-3.5 sm:p-4 rounded-2xl bg-[#17171F] hover:bg-[#20202B] active:scale-95 border border-stone-800 hover:border-[#DE1B76] shadow-sm hover:shadow-lg hover:shadow-[#DE1B76]/10 text-left transition-all duration-300 hover:scale-[1.03] hover:-translate-y-0.5 group cursor-pointer"
               >
                 <div className="text-[11px] font-bold uppercase tracking-wider text-[#DE1B76] flex items-center justify-between">
                   <span>SPA & MASSAGE</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
                 </div>
                 <div className="text-xs text-stone-300 font-medium mt-1">Deep tissue, scrubs & facials</div>
               </button>
@@ -58,11 +58,11 @@ export const Hero: React.FC<HeroProps> = ({
               <button
                 type="button"
                 onClick={onNavigateToServices}
-                className="p-3.5 sm:p-4 rounded-2xl bg-[#17171F] hover:bg-[#20202B] border border-stone-800 hover:border-[#DE1B76]/40 shadow-sm text-left transition-all group cursor-pointer"
+                className="p-3.5 sm:p-4 rounded-2xl bg-[#17171F] hover:bg-[#20202B] active:scale-95 border border-stone-800 hover:border-[#DE1B76] shadow-sm hover:shadow-lg hover:shadow-[#DE1B76]/10 text-left transition-all duration-300 hover:scale-[1.03] hover:-translate-y-0.5 group cursor-pointer"
               >
                 <div className="text-[11px] font-bold uppercase tracking-wider text-[#DE1B76] flex items-center justify-between">
                   <span>HAIR & BARBER</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
                 </div>
                 <div className="text-xs text-stone-300 font-medium mt-1">Braids, wigs, nails & cuts</div>
               </button>
@@ -70,11 +70,11 @@ export const Hero: React.FC<HeroProps> = ({
               <button
                 type="button"
                 onClick={onNavigateToProducts}
-                className="p-3.5 sm:p-4 rounded-2xl bg-[#17171F] hover:bg-[#20202B] border border-stone-800 hover:border-[#DE1B76]/40 shadow-sm text-left transition-all group cursor-pointer"
+                className="p-3.5 sm:p-4 rounded-2xl bg-[#17171F] hover:bg-[#20202B] active:scale-95 border border-stone-800 hover:border-[#DE1B76] shadow-sm hover:shadow-lg hover:shadow-[#DE1B76]/10 text-left transition-all duration-300 hover:scale-[1.03] hover:-translate-y-0.5 group cursor-pointer"
               >
                 <div className="text-[11px] font-bold uppercase tracking-wider text-[#DE1B76] flex items-center justify-between">
                   <span>SKINCARE SHOP</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
                 </div>
                 <div className="text-xs text-stone-300 font-medium mt-1">Egyptian milks & glow oils</div>
               </button>
@@ -85,9 +85,9 @@ export const Hero: React.FC<HeroProps> = ({
               <button
                 id="hero-book-cta"
                 onClick={onOpenBooking}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#DE1B76] hover:bg-[#c41566] text-white px-6 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#DE1B76]/20 transition-all cursor-pointer min-h-[44px]"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#DE1B76] hover:bg-[#c41566] active:scale-95 text-white px-6 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#DE1B76]/25 hover:shadow-xl hover:shadow-[#DE1B76]/45 hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer min-h-[44px] group"
               >
-                <Calendar className="w-4 h-4 text-white" />
+                <Calendar className="w-4 h-4 text-white transition-transform duration-300 group-hover:scale-110" />
                 <span>Book Appointment</span>
               </button>
 
@@ -95,18 +95,18 @@ export const Hero: React.FC<HeroProps> = ({
                 <button
                   id="hero-view-services-btn"
                   onClick={onNavigateToServices}
-                  className="inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-[#17171F] hover:bg-[#22222E] text-stone-100 px-4 sm:px-5 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider border border-stone-700 transition-all cursor-pointer shadow-xs min-h-[44px]"
+                  className="inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-[#17171F] hover:bg-[#22222E] active:scale-95 text-stone-100 hover:text-white px-4 sm:px-5 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider border border-stone-700 hover:border-[#DE1B76]/60 hover:scale-105 hover:-translate-y-0.5 hover:shadow-md transition-all duration-300 cursor-pointer shadow-xs min-h-[44px] group"
                 >
                   <span>Services</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-stone-400" />
+                  <ArrowRight className="w-3.5 h-3.5 text-stone-400 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-[#DE1B76]" />
                 </button>
 
                 <button
                   id="hero-shop-products-btn"
                   onClick={onNavigateToProducts}
-                  className="inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-[#17171F] hover:bg-[#22222E] text-stone-100 px-4 sm:px-5 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider border border-stone-700 transition-all cursor-pointer shadow-xs min-h-[44px]"
+                  className="inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-[#17171F] hover:bg-[#22222E] active:scale-95 text-stone-100 hover:text-white px-4 sm:px-5 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider border border-stone-700 hover:border-[#DE1B76]/60 hover:scale-105 hover:-translate-y-0.5 hover:shadow-md transition-all duration-300 cursor-pointer shadow-xs min-h-[44px] group"
                 >
-                  <ShoppingBag className="w-3.5 h-3.5 text-[#DE1B76]" />
+                  <ShoppingBag className="w-3.5 h-3.5 text-[#DE1B76] transition-transform duration-300 group-hover:scale-110" />
                   <span>Products</span>
                 </button>
               </div>
@@ -155,20 +155,20 @@ export const Hero: React.FC<HeroProps> = ({
               <div className="p-3.5 sm:p-4 bg-[#101016] text-white flex items-center justify-between gap-3 text-xs border-t border-stone-800">
                 <div className="space-y-0.5 min-w-0">
                   <div className="text-stone-400 text-[10px] sm:text-[11px] uppercase tracking-wider font-medium">Customer Support</div>
-                  <div className="font-mono font-bold text-stone-200 text-xs sm:text-sm truncate">{SPA_INFO.phonePrimary}</div>
+                  <div className="font-mono font-bold text-stone-200 text-xs sm:text-sm truncate">{SPA_INFO.phoneCallFormatted}</div>
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
                   <a
-                    href={`tel:${SPA_INFO.phonePrimary}`}
-                    className="px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-stone-200 font-semibold text-xs transition-colors min-h-[36px] flex items-center justify-center"
-                    aria-label={`Call ${SPA_INFO.phonePrimary}`}
+                    href={`tel:${SPA_INFO.phoneCall}`}
+                    className="px-3.5 py-2 rounded-lg bg-white/10 hover:bg-[#DE1B76] text-stone-200 hover:text-white font-semibold text-xs transition-colors min-h-[36px] flex items-center justify-center hover:scale-105 active:scale-95 cursor-pointer"
+                    aria-label={`Call ${SPA_INFO.phoneCallFormatted}`}
                   >
                     Call
                   </a>
                   <button
                     onClick={onOpenWhatsAppModal}
-                    className="px-4 py-2 rounded-lg bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs transition-colors flex items-center gap-1.5 min-h-[36px] cursor-pointer shadow-sm"
-                    aria-label="Message on WhatsApp (Lines 1 & 2)"
+                    className="px-4 py-2 rounded-lg bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs transition-all flex items-center gap-1.5 min-h-[36px] cursor-pointer shadow-sm hover:scale-105 active:scale-95"
+                    aria-label="Message on WhatsApp"
                   >
                     <WhatsAppIcon className="w-4 h-4 text-white shrink-0" />
                     <span>WhatsApp</span>

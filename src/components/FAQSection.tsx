@@ -38,24 +38,26 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ onOpenWhatsAppModal }) =
             return (
               <div
                 key={index}
-                className="bg-[#14141A] rounded-2xl border border-stone-800 overflow-hidden shadow-md"
+                className={`bg-[#14141A] rounded-2xl border transition-all duration-300 overflow-hidden shadow-md ${
+                  isOpen ? 'border-[#DE1B76]/50 shadow-lg shadow-[#DE1B76]/10' : 'border-stone-800 hover:border-stone-700 hover:bg-[#181822]'
+                }`}
               >
                 <button
                   type="button"
                   onClick={() => toggle(index)}
-                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-white hover:text-[#DE1B76] transition-colors cursor-pointer"
+                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-white hover:text-[#DE1B76] transition-colors cursor-pointer group"
                   aria-expanded={isOpen}
                 >
-                  <span>{faq.question}</span>
+                  <span className="group-hover:translate-x-0.5 transition-transform">{faq.question}</span>
                   <ChevronDown
-                    className={`w-5 h-5 text-stone-400 shrink-0 transition-transform duration-200 ${
-                      isOpen ? 'rotate-180 text-[#DE1B76]' : ''
+                    className={`w-5 h-5 text-stone-400 shrink-0 transition-transform duration-300 ${
+                      isOpen ? 'rotate-180 text-[#DE1B76]' : 'group-hover:text-[#DE1B76]'
                     }`}
                   />
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-stone-300 leading-relaxed border-t border-stone-800 text-left">
+                  <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-stone-300 leading-relaxed border-t border-stone-800 text-left animate-in fade-in duration-200">
                     {faq.answer}
                   </div>
                 )}
@@ -65,7 +67,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ onOpenWhatsAppModal }) =
         </div>
 
         {/* Custom inquiry strip */}
-        <div className="mt-8 p-6 rounded-3xl bg-[#14141A] border border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+        <div className="mt-8 p-6 rounded-3xl bg-[#14141A] hover:bg-[#181822] border border-stone-800 hover:border-[#DE1B76]/40 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl transition-all duration-300">
           <div className="flex items-center gap-3.5 text-left">
             <div className="w-10 h-10 rounded-xl bg-stone-900 text-[#DE1B76] flex items-center justify-center shrink-0 border border-stone-800">
               <MessageSquare className="w-5 h-5" />
@@ -78,9 +80,9 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ onOpenWhatsAppModal }) =
 
           <button
             onClick={onOpenWhatsAppModal}
-            className="inline-flex items-center gap-2 px-5 py-3 bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-lg transition-colors shrink-0 cursor-pointer"
+            className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-lg hover:shadow-xl hover:shadow-[#25D366]/30 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 shrink-0 cursor-pointer group"
           >
-            <WhatsAppIcon className="w-4 h-4 text-white" />
+            <WhatsAppIcon className="w-4 h-4 text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" />
             <span>WhatsApp Desk</span>
           </button>
         </div>

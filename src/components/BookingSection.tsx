@@ -227,7 +227,7 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
             Reserve Your <span className="not-italic font-bold font-sans text-[#DE1B76]">MagKay Session</span>
           </h2>
           <p className="text-base sm:text-lg text-stone-400">
-            Select your desired treatments, choose In-Spa or VIP Home Service, and confirm instantly via WhatsApp Line 1/Line 2 or web inquiry.
+            Select your desired treatments, choose In-Spa or VIP Home Service, and confirm instantly via WhatsApp or web inquiry.
           </p>
 
           {/* Formspree endpoint customizer button */}
@@ -354,7 +354,7 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
                 className="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3.5 rounded-full font-bold text-xs uppercase tracking-widest shadow-lg hover:bg-[#20ba59] transition-all cursor-pointer"
               >
                 <WhatsAppIcon className="w-4 h-4 text-white" />
-                <span>WhatsApp Line 1 / Line 2</span>
+                <span>Confirm on WhatsApp</span>
               </button>
 
               <button
@@ -385,14 +385,14 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
                   <button
                     type="button"
                     onClick={() => setServiceType('in-spa')}
-                    className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
+                    className={`p-4 rounded-2xl border text-left transition-all duration-300 cursor-pointer flex flex-col justify-between hover:scale-[1.02] active:scale-98 ${
                       serviceType === 'in-spa'
-                        ? 'border-[#DE1B76] bg-[#1E151E] ring-1 ring-[#DE1B76]/50 shadow-sm'
-                        : 'border-stone-800 hover:border-stone-700 bg-[#191922]'
+                        ? 'border-[#DE1B76] bg-[#1E151E] ring-1 ring-[#DE1B76]/50 shadow-md shadow-[#DE1B76]/20'
+                        : 'border-stone-800 hover:border-[#DE1B76]/50 hover:bg-[#1C1C26] bg-[#191922]'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-2">
-                      <Building2 className={`w-5 h-5 ${serviceType === 'in-spa' ? 'text-[#DE1B76]' : 'text-stone-500'}`} />
+                      <Building2 className={`w-5 h-5 transition-transform duration-300 group-hover:scale-110 ${serviceType === 'in-spa' ? 'text-[#DE1B76]' : 'text-stone-500'}`} />
                       {serviceType === 'in-spa' && <Check className="w-4 h-4 text-[#DE1B76]" />}
                     </div>
                     <div>
@@ -404,14 +404,14 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
                   <button
                     type="button"
                     onClick={() => setServiceType('home-service')}
-                    className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
+                    className={`p-4 rounded-2xl border text-left transition-all duration-300 cursor-pointer flex flex-col justify-between hover:scale-[1.02] active:scale-98 ${
                       serviceType === 'home-service'
-                        ? 'border-[#DE1B76] bg-[#1E151E] ring-1 ring-[#DE1B76]/50 shadow-sm'
-                        : 'border-stone-800 hover:border-stone-700 bg-[#191922]'
+                        ? 'border-[#DE1B76] bg-[#1E151E] ring-1 ring-[#DE1B76]/50 shadow-md shadow-[#DE1B76]/20'
+                        : 'border-stone-800 hover:border-[#DE1B76]/50 hover:bg-[#1C1C26] bg-[#191922]'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-2">
-                      <Home className={`w-5 h-5 ${serviceType === 'home-service' ? 'text-[#DE1B76]' : 'text-stone-500'}`} />
+                      <Home className={`w-5 h-5 transition-transform duration-300 group-hover:scale-110 ${serviceType === 'home-service' ? 'text-[#DE1B76]' : 'text-stone-500'}`} />
                       {serviceType === 'home-service' && <Check className="w-4 h-4 text-[#DE1B76]" />}
                     </div>
                     <div>
@@ -457,10 +457,10 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
                       <div
                         key={service.id}
                         onClick={() => toggleService(service.id)}
-                        className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer flex items-start justify-between gap-2 ${
+                        className={`p-3.5 rounded-2xl border text-left transition-all duration-300 cursor-pointer flex items-start justify-between gap-2 hover:scale-[1.02] active:scale-98 ${
                           isSelected
-                            ? 'border-[#DE1B76] bg-[#1E151E] ring-1 ring-[#DE1B76]/40 shadow-xs'
-                            : 'border-stone-800 hover:border-stone-700 bg-[#191922]'
+                            ? 'border-[#DE1B76] bg-[#1E151E] ring-1 ring-[#DE1B76]/40 shadow-sm shadow-[#DE1B76]/20'
+                            : 'border-stone-800 hover:border-[#DE1B76]/50 hover:bg-[#1C1C26] bg-[#191922]'
                         }`}
                       >
                         <div className="space-y-1">
@@ -480,8 +480,8 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
                           </div>
                         </div>
 
-                        <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-1 ${
-                          isSelected ? 'bg-[#DE1B76] text-white' : 'border border-stone-700 bg-stone-900'
+                        <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-1 transition-transform duration-300 ${
+                          isSelected ? 'bg-[#DE1B76] text-white scale-110' : 'border border-stone-700 bg-stone-900'
                         }`}>
                           {isSelected ? <Check className="w-3 h-3" /> : <Plus className="w-3 h-3 text-stone-500" />}
                         </div>
@@ -535,15 +535,22 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
 
                 <div>
                   <label className="block text-xs font-semibold text-stone-300 mb-1">
-                    Direct WhatsApp Dispatch Lines
+                    MagKay Direct Booking Contacts
                   </label>
-                  <div className="flex items-center gap-3 p-3.5 rounded-xl border border-stone-800 bg-stone-900 text-xs text-stone-300">
-                    <div className="w-8 h-8 rounded-lg bg-[#25D366] text-white flex items-center justify-center shrink-0 shadow-xs">
-                      <span className="w-2.5 h-2.5 rounded-full bg-white animate-pulse" />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                    <div className="flex items-center gap-2.5 p-3 rounded-xl border border-stone-800 bg-stone-900 text-stone-300">
+                      <Phone className="w-4 h-4 text-[#DE1B76] shrink-0" />
+                      <div>
+                        <div className="text-[10px] text-stone-400 font-semibold uppercase">Direct Voice Call</div>
+                        <div className="font-bold text-white font-mono">{SPA_INFO.phoneCallFormatted}</div>
+                      </div>
                     </div>
-                    <div>
-                      <div className="font-bold text-white font-mono text-sm">{SPA_INFO.phonePrimary} / {SPA_INFO.phoneSecondary}</div>
-                      <div className="text-[11px] text-stone-400">Line 1 (Primary) & Line 2 (Support) available</div>
+                    <div className="flex items-center gap-2.5 p-3 rounded-xl border border-stone-800 bg-stone-900 text-stone-300">
+                      <WhatsAppIcon className="w-4 h-4 text-[#25D366] shrink-0" />
+                      <div>
+                        <div className="text-[10px] text-stone-400 font-semibold uppercase">Official WhatsApp</div>
+                        <div className="font-bold text-white font-mono">{SPA_INFO.phoneWhatsAppFormatted}</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -682,19 +689,19 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
                   <button
                     type="button"
                     onClick={handleWhatsAppBooking}
-                    className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white py-3.5 px-4 rounded-xl font-bold text-xs uppercase tracking-widest shadow-lg transition-all cursor-pointer"
+                    className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white py-3.5 px-4 rounded-xl font-bold text-xs uppercase tracking-widest shadow-lg hover:shadow-xl hover:shadow-[#25D366]/30 hover:scale-[1.02] hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group"
                   >
-                    <WhatsAppIcon className="w-4 h-4 text-white" />
-                    <span>Choose WhatsApp Line & Send</span>
+                    <WhatsAppIcon className="w-4 h-4 text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" />
+                    <span>Send Booking via WhatsApp</span>
                   </button>
 
                   <button
                     type="button"
                     onClick={handleFormspreeSubmit}
                     disabled={isSubmittingFormspree}
-                    className="w-full flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-stone-200 py-3 px-4 rounded-xl font-bold text-xs uppercase tracking-wider border border-white/10 transition-all cursor-pointer"
+                    className="w-full flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 active:scale-95 text-stone-200 hover:text-white py-3 px-4 rounded-xl font-bold text-xs uppercase tracking-wider border border-white/10 hover:border-white/20 hover:scale-[1.02] hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group"
                   >
-                    <Calendar className="w-3.5 h-3.5 text-[#DE1B76]" />
+                    <Calendar className="w-3.5 h-3.5 text-[#DE1B76] transition-transform duration-300 group-hover:scale-110" />
                     <span>{isSubmittingFormspree ? 'Submitting Form...' : 'Send Web Inquiry'}</span>
                   </button>
                 </div>

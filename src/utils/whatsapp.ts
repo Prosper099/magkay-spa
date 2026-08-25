@@ -55,7 +55,7 @@ Please confirm availability and booking details. Thank you!`;
 /**
  * Format a WhatsApp message for a single service inquiry
  */
-export function generateServiceInquiryUrl(service: SpaService, phone: string = SPA_INFO.phonePrimary): string {
+export function generateServiceInquiryUrl(service: SpaService, phone: string = SPA_INFO.phoneWhatsApp): string {
   const cleanPhone = phone.replace(/^0/, '234');
   const message = `Hello MagKay Spa! 🌸 
 I would like to inquire about/book the *${service.name}* (₦${service.priceNaira.toLocaleString()} - ${service.durationMinutes} mins).
@@ -68,7 +68,7 @@ Can you please share available time slots at your KM 5 LASU-Isheri center or hom
 /**
  * Format a WhatsApp message for a skincare product order
  */
-export function generateProductOrderUrl(product: SkincareProduct, quantity: number = 1, phone: string = SPA_INFO.phonePrimary): string {
+export function generateProductOrderUrl(product: SkincareProduct, quantity: number = 1, phone: string = SPA_INFO.phoneWhatsApp): string {
   const cleanPhone = phone.replace(/^0/, '234');
   const totalPrice = product.priceNaira * quantity;
   const message = `Hello MagKay Skincare Team! ✨
@@ -85,7 +85,7 @@ Please confirm payment details and delivery/pickup at KM 5 Ipaye Bus Stop, LASU-
 /**
  * Format general quick chat
  */
-export function generateGeneralChatUrl(phone: string = SPA_INFO.phonePrimary, text: string = "Hello MagKay Spa! I would like to inquire about your services and available appointments."): string {
+export function generateGeneralChatUrl(phone: string = SPA_INFO.phoneWhatsApp, text: string = "Hello MagKay Spa! I would like to inquire about your services and available appointments."): string {
   const cleanPhone = phone.replace(/^0/, '234');
   return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(text)}`;
 }

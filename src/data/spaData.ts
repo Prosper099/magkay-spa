@@ -1,20 +1,33 @@
 import { SpaService, SkincareProduct, OperatingHoursDay, GalleryItem, Testimonial } from '../types';
 
 // Real and authentic MagKay Spa images
-import magkayStorefront from '../assets/images/magkay_spa_original_building_1787612776422.jpg';
+import coverPhoto from '../assets/images/cover_photo.webp';
 import goldFacialTherapy from '../assets/images/gold_facial_therapy_1787604927665.jpg';
 import africanHairBraids from '../assets/images/african_hair_braids_1787604941612.jpg';
 import facialCleansingFoam from '../assets/images/facial_cleansing_foam_1787604954776.jpg';
 import skincareBottles from '../assets/images/magkay_skincare_bottles_1787604968547.jpg';
-import magkayLogo from '../assets/images/magkay_spa_logo_1787609407242.jpg';
+import magkayLogo from '../assets/images/magkay_logo.jfif';
+import haircutPhoto from '../assets/images/haircut.jfif';
+import hairstylePhoto from '../assets/images/hairstyle.jfif';
+import skincarePhoto from '../assets/images/skincare.jfif';
+import productPhoto from '../assets/images/product.jfif';
 
 export const SPA_ASSETS = {
   logo: magkayLogo,
-  storefront: magkayStorefront,
+  storefront: coverPhoto,
+  coverPhoto: coverPhoto,
   goldFacial: goldFacialTherapy,
-  hairBraids: africanHairBraids,
-  facialFoam: facialCleansingFoam,
-  skincareBottles: skincareBottles,
+  hairBraids: hairstylePhoto,
+  hairstyle: hairstylePhoto,
+  facialFoam: skincarePhoto,
+  deepCleansing: skincarePhoto,
+  skincare: skincarePhoto,
+  skincareBottles: productPhoto,
+  products: productPhoto,
+  product: productPhoto,
+  whiteningCream: productPhoto,
+  barbershop: haircutPhoto,
+  haircut: haircutPhoto,
 };
 
 export const SPA_INFO = {
@@ -24,12 +37,20 @@ export const SPA_INFO = {
   foundedYear: "2021",
   address: "KM 5, Ipaye Bus Stop, LASU-Isheri Road, Iba Ojo, Lagos, Nigeria",
   landmark: "Beside Ipaye Bus Stop, opposite Ojo Local Govt Area Corridor, LASU-Isheri Express",
-  phonePrimary: "08091537732",
-  phoneSecondary: "08135923223",
-  phonePrimaryIntl: "+2348091537732",
-  phoneSecondaryIntl: "+2348135923223",
+  phoneCall: "08135923223",
+  phoneCallFormatted: "0813 592 3223",
+  phoneWhatsApp: "08091537732",
+  phoneWhatsAppFormatted: "0809 153 7732",
+  phonePrimary: "08135923223", // Call line (Line 1)
+  phoneSecondary: "08091537732", // WhatsApp line (Line 2)
+  phoneCallIntl: "+2348135923223",
+  phoneWhatsAppIntl: "+2348091537732",
+  phonePrimaryIntl: "+2348135923223",
+  phoneSecondaryIntl: "+2348091537732",
+  callUrl: "tel:08135923223",
+  whatsappUrl: "https://wa.me/2348091537732",
   whatsappUrlPrimary: "https://wa.me/2348091537732",
-  whatsappUrlSecondary: "https://wa.me/2348135923223",
+  whatsappUrlSecondary: "https://wa.me/2348091537732",
   instagramHandle: "@magkayspa01",
   instagramUrl: "https://www.instagram.com/magkayspa01",
   tagline: "Self-care isn't a luxury ☺️ it's a necessity",
@@ -91,21 +112,21 @@ export const SPA_SERVICES: SpaService[] = [
     image: SPA_ASSETS.facialFoam
   },
   {
-    id: "papaya-body-scrub",
-    name: "Papaya & Organic Body Scrub Exfoliation",
+    id: "magkay-whitening-body-therapy",
+    name: "MagKay Natural Skin Care Whitening Cream & Gluta Body Therapy",
     category: "skincare",
     categoryLabel: "Skincare & Facials",
-    tagline: "Full body polishing to slough dead cells and reveal velvety soft skin",
-    description: "A decadent full-body polishing treatment infused with organic papaya enzymes, natural cane sugar crystals, and sweet almond oil. Leaves skin exceptionally soft, luminous, and prepared for even skincare absorption.",
+    tagline: "Authentic MagKay Natural Skin Care Whitening Cream & Gluta Body Lotion treatment",
+    description: "Authentic MagKay Natural Skin Care therapy using our proprietary Whitening Cream (100g) and Gluta Whitening Body Lotion. Formulated with natural glutathione, nourishing vitamins, and botanical brightening extracts for glowing, spotless, and silky-smooth skin.",
     durationMinutes: 60,
     priceNaira: 25000,
     benefits: [
-      "Erases dry flaky skin and rough patches",
-      "Enhances natural skin brightness",
-      "Evens out dark elbows, knees, and body spots",
-      "Finished with MagKay botanical glow butter"
+      "Infused with authentic MagKay Whitening Cream & Gluta Body Lotion",
+      "Eliminates dead skin cells, sun tan & stubborn dark spots",
+      "Deeply moisturizes and restores natural glow with gentle botanical formula",
+      "Finished with MagKay Natural Skin Care hydrating seal"
     ],
-    image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1000&auto=format&fit=crop"
+    image: SPA_ASSETS.products
   },
   {
     id: "knuckle-clearing-treatment",
@@ -287,7 +308,7 @@ export const SPA_SERVICES: SpaService[] = [
       "Removes facial blackheads & ingrown hair bump prevention",
       "Finished with aftershave cologne and beard shine"
     ],
-    image: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1000&auto=format&fit=crop"
+    image: SPA_ASSETS.barbershop
   },
 
   // Home Services
@@ -313,22 +334,22 @@ export const SPA_SERVICES: SpaService[] = [
 
 export const SKINCARE_PRODUCTS: SkincareProduct[] = [
   {
-    id: "egyptian-body-cream",
-    name: "MagKay Egyptian Luxe Body Milk",
-    category: "Body Care",
-    tagline: "Silky whitening & radiance body cream with goat milk & licorice extract",
-    description: "Rich botanical moisturizer formulated with Egyptian milk extract, alpha arbutin, and shea butter. Deeply moisturizes while fading stubborn blemishes and promoting a luminous golden glow without harsh bleaching.",
+    id: "magkay-whitening-cream-lotion",
+    name: "MagKay Natural Skin Care Whitening Cream & Gluta Lotion Set",
+    category: "Body & Face Care",
+    tagline: "Authentic MagKay Natural Skin Care Whitening Cream (100g) & Gluta Body Lotion",
+    description: "Original MagKay Natural Skin Care formula as featured in our salon. Contains our signature 100g Whitening Cream jar and Gluta Whitening Body Lotion for active brightening, hyperpigmentation fading, and smooth golden glow.",
     priceNaira: 18500,
-    size: "350ml",
-    skinType: "All Skin Types / Normal to Dry",
-    keyIngredients: ["Egyptian Goat Milk", "Licorice Root Extract", "Alpha Arbutin", "Sweet Almond Oil"],
+    size: "100g Jar + 350ml Lotion",
+    skinType: "All Skin Types / Hyperpigmented Skin",
+    keyIngredients: ["Natural Glutathione", "Licorice Extract", "Alpha Arbutin", "Singapore Beauty White Formulation"],
     benefits: [
-      "Delivers intense 48-hour moisture",
-      "Even out dark elbows, knees, and uneven tone",
-      "Lightweight non-greasy absorption",
-      "Subtle luxurious Arabian floral aroma"
+      "Authentic MagKay Natural Skin Care salon formulation",
+      "Clears dark spots, acne scars, and uneven complexion",
+      "Deep 48-hour moisture with zero greasy residue",
+      "Original packaging with verification guarantee"
     ],
-    image: SPA_ASSETS.skincareBottles,
+    image: SPA_ASSETS.products,
     inStock: true
   },
   {
@@ -427,6 +448,14 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     instagramTag: "@magkayspa01"
   },
   {
+    id: "g-barber",
+    title: "Executive Precision Haircut & Beard Sculpting",
+    category: "barbershop",
+    image: SPA_ASSETS.barbershop,
+    caption: "Signature razor fade, beard detailing, and refreshing grooming at MagKay Barbershop desk.",
+    instagramTag: "@magkayspa01"
+  },
+  {
     id: "g3",
     title: "Knotless Bohemian Braids Salon Styling",
     category: "hair",
@@ -444,10 +473,10 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: "g5",
-    title: "MagKay Signature Skincare Collection",
+    title: "MagKay Natural Skin Care Whitening Cream & Gluta Lotions",
     category: "skincare",
-    image: SPA_ASSETS.skincareBottles,
-    caption: "Egyptian Luxe Body Milk, Glow Serums, and botanically active corrective creams in stock.",
+    image: SPA_ASSETS.products,
+    caption: "Original MagKay Natural Skin Care Whitening Cream (100g) & Gluta Whitening Body Lotions.",
     instagramTag: "@magkayspa01"
   },
   {

@@ -10,6 +10,103 @@
   h1, h2, h3, .font-serif-luxury {
     font-family: 'Cormorant Garamond', Georgia, serif;
   }
+
+  /* Accessible button defaults with smooth transitions */
+  button, a {
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+/* Hover Animation Utilities */
+.btn-hover-lift {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+.btn-hover-lift:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+.btn-hover-lift:active {
+  transform: translateY(0px) scale(0.97);
+}
+
+.btn-hover-glow {
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.btn-hover-glow:hover {
+  transform: translateY(-1.5px) scale(1.03);
+  box-shadow: 0 10px 25px -5px rgba(222, 27, 118, 0.35), 0 8px 10px -6px rgba(222, 27, 118, 0.2);
+}
+.btn-hover-glow:active {
+  transform: translateY(0px) scale(0.97);
+}
+
+.btn-hover-emerald {
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.btn-hover-emerald:hover {
+  transform: translateY(-1.5px) scale(1.03);
+  box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.35), 0 8px 10px -6px rgba(37, 211, 102, 0.2);
+}
+.btn-hover-emerald:active {
+  transform: translateY(0px) scale(0.97);
+}
+
+/* Loading & Shimmer Animation Utilities */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.shimmer-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 1.8s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+.animate-float-gentle {
+  animation: floatGentle 3s infinite ease-in-out;
 }
 
 /* Frosted Glass Utilities */
@@ -65,4 +162,5 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #9A7456;
 }
+
 

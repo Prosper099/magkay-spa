@@ -3,6 +3,7 @@ import { ShoppingBag, Check, ShieldCheck, Heart, ArrowLeft, Search, Flower2, Gem
 import { WhatsAppIcon } from './WhatsAppIcon';
 import { SKINCARE_PRODUCTS, SPA_INFO } from '../data/spaData';
 import { SkincareProduct } from '../types';
+import { ImageWithLoading } from './ImageWithLoading';
 
 interface ProductsSectionProps {
   onNavigateHome?: () => void;
@@ -118,10 +119,10 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2 rounded-xl font-bold text-xs whitespace-nowrap transition-all cursor-pointer ${
+                  className={`px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap transition-all duration-200 cursor-pointer active:scale-95 ${
                     isActive
-                      ? 'bg-[#DE1B76] text-white shadow-md shadow-[#DE1B76]/20'
-                      : 'bg-[#14141A] text-stone-400 hover:text-white hover:bg-stone-800 border border-stone-800'
+                      ? 'bg-[#DE1B76] text-white shadow-md shadow-[#DE1B76]/30 scale-105'
+                      : 'bg-[#14141A] text-stone-400 hover:text-white hover:bg-stone-800/90 border border-stone-800 hover:border-stone-700 hover:scale-105'
                   }`}
                 >
                   <span>{cat === 'all' ? 'All Formulas' : cat}</span>
@@ -149,36 +150,36 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({
               return (
                 <div
                   key={product.id}
-                  className="bg-[#14141A] rounded-2xl overflow-hidden border border-stone-800 shadow-lg hover:shadow-2xl hover:border-[#DE1B76]/40 transition-all flex flex-col justify-between"
+                  className="bg-[#14141A] rounded-2xl overflow-hidden border border-stone-800 shadow-lg hover:shadow-2xl hover:shadow-[#DE1B76]/15 hover:border-[#DE1B76]/60 hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
                 >
                   {/* Top Image + Badges */}
                   <div>
                     <div className="relative aspect-[4/3] overflow-hidden bg-stone-900">
-                      <img
+                      <ImageWithLoading
                         src={product.image}
                         alt={product.name}
+                        wrapperClassName="w-full h-full group-hover:scale-108 transition-transform duration-700 ease-out"
                         className="w-full h-full object-cover"
-                        loading="lazy"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#14141A] via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#14141A] via-transparent to-transparent pointer-events-none" />
                       
                       {/* Top Badges */}
                       <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-                        <span className="bg-black/80 backdrop-blur-md text-stone-200 border border-white/10 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                        <span className="bg-black/80 backdrop-blur-md text-stone-200 border border-white/10 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider group-hover:border-[#DE1B76]/50 transition-colors">
                           {product.category}
                         </span>
-                        <span className="bg-[#DE1B76]/90 text-white px-2.5 py-1 rounded-full text-[10px] font-bold font-mono">
+                        <span className="bg-[#DE1B76]/90 text-white px-2.5 py-1 rounded-full text-[10px] font-bold font-mono shadow-sm">
                           {product.size}
                         </span>
                       </div>
 
                       {/* In Stock & Price overlay */}
                       <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
-                        <div className="flex items-center gap-1.5 text-xs text-stone-300 bg-black/70 px-2.5 py-1 rounded-lg border border-white/10">
+                        <div className="flex items-center gap-1.5 text-xs text-stone-300 bg-black/70 px-2.5 py-1 rounded-lg border border-white/10 group-hover:border-[#25D366]/40 transition-colors">
                           <Check className="w-3.5 h-3.5 text-[#25D366]" />
                           <span>In Stock</span>
                         </div>
-                        <div className="font-serif italic text-2xl font-bold text-[#FF4B99] drop-shadow-sm">
+                        <div className="font-serif italic text-2xl font-bold text-[#FF4B99] drop-shadow-sm group-hover:scale-105 transition-transform duration-300">
                           ₦{product.priceNaira.toLocaleString()}
                         </div>
                       </div>
@@ -187,7 +188,7 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({
                     {/* Card Content */}
                     <div className="p-6 space-y-4 text-left">
                       <div>
-                        <h3 className="text-lg font-bold text-white leading-snug">
+                        <h3 className="text-lg font-bold text-white group-hover:text-[#DE1B76] transition-colors leading-snug">
                           {product.name}
                         </h3>
                         <p className="text-xs text-stone-400 font-medium italic mt-0.5">
@@ -208,7 +209,7 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({
                           {product.keyIngredients.map((ing, i) => (
                             <span
                               key={i}
-                              className="text-[11px] bg-stone-900 text-stone-300 px-2.5 py-1 rounded-md border border-stone-800"
+                              className="text-[11px] bg-stone-900 hover:bg-stone-800 text-stone-300 hover:text-white px-2.5 py-1 rounded-md border border-stone-800 hover:border-stone-700 transition-all duration-200 hover:scale-105 cursor-default"
                             >
                               {ing}
                             </span>
@@ -217,7 +218,7 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({
                       </div>
 
                       {/* Usage Guide */}
-                      <div className="p-3 rounded-xl bg-stone-900/90 border border-stone-800 text-xs text-stone-400">
+                      <div className="p-3 rounded-xl bg-stone-900/90 border border-stone-800 text-xs text-stone-400 group-hover:border-stone-700 transition-colors">
                         <span className="font-semibold text-stone-200">How to use: </span>
                         {product.usageInstructions || 'Apply gently to cleansed skin as directed by your MagKay aesthetician.'}
                       </div>
@@ -230,19 +231,21 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({
                       {/* Quantity Selector */}
                       <div className="flex items-center justify-between text-xs">
                         <span className="font-semibold text-stone-400">Quantity:</span>
-                        <div className="flex items-center border border-stone-700 bg-stone-900 rounded-lg overflow-hidden">
+                        <div className="flex items-center border border-stone-700 bg-stone-900 rounded-lg overflow-hidden shadow-xs">
                           <button
                             onClick={() => handleQtyChange(product.id, -1)}
-                            className="px-2.5 py-1 text-stone-300 hover:bg-stone-800 font-bold transition-colors cursor-pointer"
+                            className="px-3 py-1.5 text-stone-300 hover:text-white hover:bg-stone-800 font-bold transition-all duration-200 active:scale-90 cursor-pointer"
+                            aria-label="Decrease quantity"
                           >
                             -
                           </button>
-                          <span className="px-3 py-1 font-mono font-bold text-white text-xs">
+                          <span className="px-3 py-1.5 font-mono font-bold text-white text-xs bg-stone-950/50">
                             {qty}
                           </span>
                           <button
                             onClick={() => handleQtyChange(product.id, 1)}
-                            className="px-2.5 py-1 text-stone-300 hover:bg-stone-800 font-bold transition-colors cursor-pointer"
+                            className="px-3 py-1.5 text-stone-300 hover:text-white hover:bg-stone-800 font-bold transition-all duration-200 active:scale-90 cursor-pointer"
+                            aria-label="Increase quantity"
                           >
                             +
                           </button>
@@ -252,9 +255,9 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({
                       {/* WhatsApp Direct Order Button */}
                       <button
                         onClick={() => handleOrderProduct(product)}
-                        className="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white py-3 px-3 rounded-xl font-bold text-xs uppercase tracking-wider shadow-lg hover:shadow-[#25D366]/20 transition-all cursor-pointer whitespace-nowrap"
+                        className="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white py-3 px-3 rounded-xl font-bold text-xs uppercase tracking-wider shadow-lg hover:shadow-xl hover:shadow-[#25D366]/30 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 cursor-pointer whitespace-nowrap group/order"
                       >
-                        <WhatsAppIcon className="w-4 h-4 text-white shrink-0" />
+                        <WhatsAppIcon className="w-4 h-4 text-white shrink-0 transition-transform duration-300 group-hover/order:scale-110" />
                         <span>Order on WhatsApp (₦{(product.priceNaira * qty).toLocaleString()})</span>
                       </button>
                     </div>

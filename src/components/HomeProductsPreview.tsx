@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 import { SKINCARE_PRODUCTS, SPA_INFO } from '../data/spaData';
 import { generateProductOrderUrl } from '../utils/whatsapp';
+import { ImageWithLoading } from './ImageWithLoading';
 
 interface HomeProductsPreviewProps {
   onNavigateToProducts: () => void;
@@ -56,13 +57,13 @@ export const HomeProductsPreview: React.FC<HomeProductsPreviewProps> = ({
                 <div>
                   {/* Product Image */}
                   <div className="relative aspect-[4/3] overflow-hidden bg-stone-900">
-                    <img
+                    <ImageWithLoading
                       src={product.image}
                       alt={product.name}
+                      wrapperClassName="w-full h-full"
                       className="w-full h-full object-cover"
-                      loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 
                     <div className="absolute top-3 left-3 flex gap-2">
                       <span className="bg-white/90 text-stone-900 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-xs">
@@ -112,9 +113,9 @@ export const HomeProductsPreview: React.FC<HomeProductsPreviewProps> = ({
                       href={orderUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white py-2.5 px-3 rounded-xl text-xs font-bold shadow-xs transition-colors cursor-pointer"
+                      className="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white py-2.5 px-3 rounded-xl text-xs font-bold shadow-md hover:shadow-lg hover:shadow-[#25D366]/30 hover:scale-[1.02] hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group"
                     >
-                      <WhatsAppIcon className="w-4 h-4 text-white" />
+                      <WhatsAppIcon className="w-4 h-4 text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" />
                       <span>Order on WhatsApp</span>
                     </a>
                   </div>
@@ -135,10 +136,10 @@ export const HomeProductsPreview: React.FC<HomeProductsPreviewProps> = ({
           <button
             id="view-all-products-cta-banner-btn"
             onClick={onNavigateToProducts}
-            className="inline-flex items-center gap-2 bg-[#B38B6D] hover:bg-[#9c7557] text-white px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider shadow-sm transition-transform hover:scale-105 cursor-pointer shrink-0"
+            className="inline-flex items-center gap-2 bg-[#DE1B76] hover:bg-[#c41566] active:scale-95 text-white px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-xl hover:shadow-[#DE1B76]/30 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 cursor-pointer shrink-0 group"
           >
             <span>Browse Full Skincare Boutique</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
         </div>
 

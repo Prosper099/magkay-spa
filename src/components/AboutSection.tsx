@@ -35,17 +35,17 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenBooking }) => 
 
             {/* 3 Core Departments */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-              <div className="p-4 rounded-2xl bg-[#14141A] border border-stone-800 shadow-md space-y-1.5">
+              <div className="p-4 rounded-2xl bg-[#14141A] hover:bg-[#1A1A22] border border-stone-800 hover:border-[#DE1B76]/50 shadow-md hover:shadow-xl hover:shadow-[#DE1B76]/10 hover:scale-105 hover:-translate-y-1 transition-all duration-300 space-y-1.5 cursor-default">
                 <h4 className="font-bold text-sm text-white">Spa & Massages</h4>
                 <p className="text-xs text-stone-400">Swedish massages, body scrubs, and aromatherapy.</p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#14141A] border border-stone-800 shadow-md space-y-1.5">
+              <div className="p-4 rounded-2xl bg-[#14141A] hover:bg-[#1A1A22] border border-stone-800 hover:border-[#DE1B76]/50 shadow-md hover:shadow-xl hover:shadow-[#DE1B76]/10 hover:scale-105 hover:-translate-y-1 transition-all duration-300 space-y-1.5 cursor-default">
                 <h4 className="font-bold text-sm text-white">Hair & Barbershop</h4>
                 <p className="text-xs text-stone-400">Braiding, wig installations, nail art, and grooming.</p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#14141A] border border-stone-800 shadow-md space-y-1.5">
+              <div className="p-4 rounded-2xl bg-[#14141A] hover:bg-[#1A1A22] border border-stone-800 hover:border-[#DE1B76]/50 shadow-md hover:shadow-xl hover:shadow-[#DE1B76]/10 hover:scale-105 hover:-translate-y-1 transition-all duration-300 space-y-1.5 cursor-default">
                 <h4 className="font-bold text-sm text-white">Clinical Skincare</h4>
                 <p className="text-xs text-stone-400">24K gold facials, hyperpigmentation care, and glow oils.</p>
               </div>
@@ -123,7 +123,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenBooking }) => 
               <div className="pt-2">
                 <button
                   onClick={() => onOpenBooking ? onOpenBooking() : window.location.assign('#booking')}
-                  className="w-full inline-flex items-center justify-center gap-2 bg-[#DE1B76] hover:bg-[#c41566] text-white py-3 rounded-xl font-bold text-xs uppercase tracking-wider transition-colors shadow-lg cursor-pointer"
+                  className="w-full inline-flex items-center justify-center gap-2 bg-[#DE1B76] hover:bg-[#c41566] active:scale-95 text-white py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#DE1B76]/30 shadow-lg cursor-pointer"
                 >
                   <span>Book a Session</span>
                 </button>

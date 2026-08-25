@@ -45,29 +45,27 @@ export const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({ onOpenBookin
 
           <div className="space-y-2">
             <a
-              href={SPA_INFO.whatsappUrlPrimary}
+              href={SPA_INFO.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full flex items-center justify-between p-2.5 rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 text-xs font-bold text-emerald-900 transition-colors"
             >
               <div className="flex items-center gap-2">
                 <Send className="w-3.5 h-3.5 text-[#25D366]" />
-                <span>Line 1: {SPA_INFO.phonePrimary}</span>
+                <span>WhatsApp: {SPA_INFO.phoneSecondary}</span>
               </div>
-              <span className="text-[10px] bg-emerald-500/20 text-emerald-800 px-2 py-0.5 rounded-full">Primary</span>
+              <span className="text-[10px] bg-emerald-500/20 text-emerald-800 px-2 py-0.5 rounded-full">Instant</span>
             </a>
 
             <a
-              href={SPA_INFO.whatsappUrlSecondary}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={`tel:${SPA_INFO.phonePrimary}`}
               className="w-full flex items-center justify-between p-2.5 rounded-2xl bg-white/60 hover:bg-white/90 border border-stone-200 text-xs font-bold text-stone-800 transition-colors"
             >
               <div className="flex items-center gap-2">
-                <Send className="w-3.5 h-3.5 text-stone-600" />
-                <span>Line 2: {SPA_INFO.phoneSecondary}</span>
+                <Phone className="w-3.5 h-3.5 text-stone-600" />
+                <span>Call Desk: {SPA_INFO.phonePrimary}</span>
               </div>
-              <span className="text-[10px] bg-stone-200 text-stone-700 px-2 py-0.5 rounded-full">Support</span>
+              <span className="text-[10px] bg-stone-200 text-stone-700 px-2 py-0.5 rounded-full">Voice</span>
             </a>
           </div>
 

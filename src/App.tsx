@@ -12,32 +12,27 @@ import { FAQSection } from './components/FAQSection';
 import { Footer } from './components/Footer';
 import { FloatingSocialDock } from './components/FloatingSocialDock';
 import { ServiceDetailModal } from './components/ServiceDetailModal';
-import { ViewSkeletonLoader } from './components/ViewSkeletonLoader';
 import { WhatsAppLineModal } from './components/WhatsAppLineModal';
 import { SpaService } from './types';
 import { ArrowLeft } from 'lucide-react';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<AppPage>('home');
-  const [isViewLoading, setIsViewLoading] = useState<boolean>(false);
   const [selectedServiceForBooking, setSelectedServiceForBooking] = useState<string | null>(null);
   const [modalService, setModalService] = useState<SpaService | null>(null);
   const [isWhatsAppModalOpen, setIsWhatsAppModalOpen] = useState<boolean>(false);
   const [whatsAppCustomMessage, setWhatsAppCustomMessage] = useState<string | undefined>(undefined);
 
-  // Sync hash routing
+  // Sync hash routing immediately without loading delays
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '');
       if (['home', 'services', 'products', 'gallery', 'about', 'location', 'booking'].includes(hash)) {
-        setIsViewLoading(true);
-        setCurrentPage(hash as AppPage);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        
-        const timer = setTimeout(() => {
-          setIsViewLoading(false);
-        }, 180);
-        return () => clearTimeout(timer);
+        const next = hash as AppPage;
+        if (next !== currentPage) {
+          setCurrentPage(next);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
       }
     };
 
@@ -47,23 +42,12 @@ export default function App() {
 
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
+  }, [currentPage]);
 
   const navigateTo = (page: AppPage) => {
-    if (page === currentPage) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-    
-    setIsViewLoading(true);
     setCurrentPage(page);
     window.location.hash = page;
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    // Subtle skeleton rendering timeout for smooth perceived performance
-    setTimeout(() => {
-      setIsViewLoading(false);
-    }, 180);
   };
 
   const handleOpenBooking = (serviceId?: string) => {
@@ -98,7 +82,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#0B0B0E] text-white relative selection:bg-[#DE1B76]/30 selection:text-[#FF4B99]">
-      
       {/* Navigation Header */}
       <Navbar 
         currentPage={currentPage}
@@ -107,20 +90,16 @@ export default function App() {
         onOpenWhatsAppModal={() => openWhatsAppModal()}
       />
 
-      {/* Dynamic View Content with Skeleton Transition */}
+      {/* Main View Content */}
       <main className="flex-grow">
-        {isViewLoading ? (
-          <ViewSkeletonLoader page={currentPage} />
-        ) : (
-          <>
-            {/* 1. Dedicated Home Landing Hub */}
-            {currentPage === 'home' && (
-              <HomeLandingHub
-                onNavigate={navigateTo}
-                onOpenBooking={handleOpenBooking}
-                onOpenWhatsAppModal={() => openWhatsAppModal()}
-              />
-            )}
+        {/* 1. Dedicated Home Landing Hub */}
+        {currentPage === 'home' && (
+          <HomeLandingHub
+            onNavigate={navigateTo}
+            onOpenBooking={handleOpenBooking}
+            onOpenWhatsAppModal={() => openWhatsAppModal()}
+          />
+        )}
 
             {/* 2. Standalone Services & Pricing Catalog Page */}
             {currentPage === 'services' && (
@@ -211,8 +190,6 @@ export default function App() {
                 />
               </div>
             )}
-          </>
-        )}
       </main>
 
       {/* Footer */}
@@ -236,7 +213,7 @@ export default function App() {
         onOpenWhatsAppModalWithMsg={(msg) => openWhatsAppModal(msg)}
       />
 
-      {/* WhatsApp Line Selection Modal (Line 1 vs Line 2) */}
+      {/* WhatsApp & Call Channels Modal */}
       <WhatsAppLineModal
         isOpen={isWhatsAppModalOpen}
         onClose={closeWhatsAppModal}

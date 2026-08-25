@@ -1,6 +1,7 @@
 import React from 'react';
 import { Camera, ArrowRight, Instagram } from 'lucide-react';
 import { GALLERY_ITEMS, SPA_INFO } from '../data/spaData';
+import { ImageWithLoading } from './ImageWithLoading';
 
 interface HomeGalleryPreviewProps {
   onNavigateToGallery: () => void;
@@ -40,7 +41,7 @@ export const HomeGalleryPreview: React.FC<HomeGalleryPreviewProps> = ({ onNaviga
 
             <button
               onClick={onNavigateToGallery}
-              className="inline-flex items-center gap-2 bg-[#1A1A1A] hover:bg-[#B38B6D] text-white px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
+              className="inline-flex items-center gap-2 bg-[#1A1A1A] hover:bg-[#DE1B76] text-white px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 cursor-pointer"
             >
               <span>Full Photo Album</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -55,11 +56,11 @@ export const HomeGalleryPreview: React.FC<HomeGalleryPreviewProps> = ({ onNaviga
               key={item.id}
               className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-stone-900 border border-stone-200 shadow-sm hover:shadow-md transition-all"
             >
-              <img
+              <ImageWithLoading
                 src={item.image}
                 alt={item.title}
-                className="w-full h-full object-cover"
-                loading="lazy"
+                wrapperClassName="w-full h-full"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 

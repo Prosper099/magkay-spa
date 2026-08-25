@@ -115,10 +115,10 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`px-4 py-2 rounded-xl font-bold text-xs whitespace-nowrap transition-all cursor-pointer ${
+                  className={`px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap transition-all duration-200 cursor-pointer active:scale-95 ${
                     isActive
-                      ? 'bg-[#DE1B76] text-white shadow-md shadow-[#DE1B76]/20'
-                      : 'bg-[#14141A] text-stone-400 hover:text-white hover:bg-stone-800 border border-stone-800'
+                      ? 'bg-[#DE1B76] text-white shadow-md shadow-[#DE1B76]/30 scale-105'
+                      : 'bg-[#14141A] text-stone-400 hover:text-white hover:bg-stone-800/90 border border-stone-800 hover:border-stone-700 hover:scale-105'
                   }`}
                 >
                   <span>{cat.label}</span>
@@ -144,7 +144,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
             {filteredServices.map((service) => (
               <div
                 key={service.id}
-                className="bg-[#14141A] rounded-2xl overflow-hidden border border-stone-800 shadow-lg hover:shadow-xl hover:border-[#DE1B76]/40 transition-all flex flex-col justify-between"
+                className="bg-[#14141A] rounded-2xl overflow-hidden border border-stone-800 shadow-lg hover:shadow-2xl hover:shadow-[#DE1B76]/15 hover:border-[#DE1B76]/60 hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
               >
                 {/* Card Image Banner */}
                 <div>
@@ -152,25 +152,25 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                     <img
                       src={service.image}
                       alt={service.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#14141A] via-transparent to-transparent" />
 
                     {/* Badges */}
                     <div className="absolute top-3 left-3 flex gap-2">
-                      <span className="bg-black/80 backdrop-blur-md text-stone-200 border border-white/10 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                      <span className="bg-black/80 backdrop-blur-md text-stone-200 border border-white/10 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider group-hover:border-[#DE1B76]/50 transition-colors">
                         {service.categoryLabel}
                       </span>
                     </div>
 
                     {/* Duration & Price Floating */}
                     <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
-                      <span className="flex items-center gap-1.5 text-xs font-medium text-stone-200 bg-black/70 px-2.5 py-1 rounded-lg border border-white/10">
+                      <span className="flex items-center gap-1.5 text-xs font-medium text-stone-200 bg-black/70 px-2.5 py-1 rounded-lg border border-white/10 group-hover:border-[#DE1B76]/40 transition-colors">
                         <Clock className="w-3.5 h-3.5 text-[#DE1B76]" />
                         {service.durationMinutes} mins
                       </span>
-                      <span className="font-serif italic text-xl font-bold text-[#FF4B99] drop-shadow-sm">
+                      <span className="font-serif italic text-xl font-bold text-[#FF4B99] drop-shadow-sm group-hover:scale-105 transition-transform duration-300">
                         ₦{service.priceNaira.toLocaleString()}
                       </span>
                     </div>
@@ -179,7 +179,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                   {/* Card Body */}
                   <div className="p-5 space-y-3 text-left">
                     <div>
-                      <h3 className="text-base sm:text-lg font-bold text-white leading-snug">
+                      <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-[#DE1B76] transition-colors leading-snug">
                         {service.name}
                       </h3>
                       <p className="text-xs text-stone-400 font-medium italic mt-0.5">
@@ -194,7 +194,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                     {/* Key Benefits List */}
                     <div className="pt-1 space-y-1.5">
                       {service.benefits.slice(0, 2).map((benefit, i) => (
-                        <div key={i} className="flex items-center gap-2 text-xs text-stone-400">
+                        <div key={i} className="flex items-center gap-2 text-xs text-stone-400 group-hover:text-stone-300 transition-colors">
                           <CheckCircle className="w-3.5 h-3.5 text-[#DE1B76] shrink-0" />
                           <span className="line-clamp-1">{benefit}</span>
                         </div>
@@ -209,27 +209,27 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                     <div className="grid grid-cols-2 gap-2">
                       <button
                         onClick={() => onSelectService(service.id)}
-                        className="inline-flex items-center justify-center gap-1.5 bg-[#DE1B76] hover:bg-[#c41566] text-white py-2 px-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
+                        className="inline-flex items-center justify-center gap-1.5 bg-[#DE1B76] hover:bg-[#c41566] active:scale-95 text-white py-2.5 px-3 rounded-xl text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg hover:shadow-[#DE1B76]/30 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 cursor-pointer group/btn"
                       >
                         <span>Book</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
+                        <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" />
                       </button>
 
                       <button
                         onClick={() => handleWhatsAppInquiry(service)}
-                        className="inline-flex items-center justify-center gap-1 bg-[#25D366] hover:bg-[#20ba59] text-white py-2 px-3 rounded-xl text-xs font-bold transition-colors cursor-pointer"
+                        className="inline-flex items-center justify-center gap-1.5 bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white py-2.5 px-3 rounded-xl text-xs font-bold shadow-md hover:shadow-lg hover:shadow-[#25D366]/30 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 cursor-pointer group/wa"
                         title="Chat on WhatsApp"
                       >
-                        <MessageCircle className="w-3.5 h-3.5 fill-white" />
+                        <MessageCircle className="w-3.5 h-3.5 fill-white transition-transform duration-300 group-hover/wa:scale-110" />
                         <span>WhatsApp</span>
                       </button>
                     </div>
 
                     <button
                       onClick={() => onOpenDetailModal(service)}
-                      className="w-full text-center text-xs text-stone-400 hover:text-white py-1 font-medium inline-flex items-center justify-center gap-1 cursor-pointer"
+                      className="w-full text-center text-xs text-stone-400 hover:text-white py-1.5 font-medium inline-flex items-center justify-center gap-1.5 cursor-pointer transition-all duration-200 hover:scale-105"
                     >
-                      <Eye className="w-3.5 h-3.5" />
+                      <Eye className="w-3.5 h-3.5 text-[#DE1B76]" />
                       <span>View details</span>
                     </button>
                   </div>
@@ -251,7 +251,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
           </div>
           <button
             onClick={() => handleWhatsAppInquiry(SPA_SERVICES[SPA_SERVICES.length - 1])}
-            className="inline-flex items-center gap-2 bg-[#DE1B76] hover:bg-[#c41566] text-white px-5 py-3 rounded-xl font-bold text-xs uppercase tracking-wider shrink-0 transition-colors shadow-lg cursor-pointer"
+            className="inline-flex items-center gap-2 bg-[#DE1B76] hover:bg-[#c41566] active:scale-95 text-white px-5 py-3 rounded-xl font-bold text-xs uppercase tracking-wider shrink-0 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 shadow-lg hover:shadow-xl hover:shadow-[#DE1B76]/30 cursor-pointer"
           >
             <span>Inquire Bridal / Group</span>
           </button>

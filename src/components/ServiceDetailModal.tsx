@@ -111,19 +111,19 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
               onClose();
               onBookService(service.id);
             }}
-            className="flex-1 inline-flex items-center justify-center gap-2 bg-[#DE1B76] hover:bg-[#c41566] text-white py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors shadow-lg cursor-pointer"
+            className="flex-1 inline-flex items-center justify-center gap-2 bg-[#DE1B76] hover:bg-[#c41566] active:scale-95 text-white py-3.5 px-4 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#DE1B76]/30 shadow-lg cursor-pointer group"
           >
             <Calendar className="w-4 h-4" />
             <span>Select & Book Service</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
 
           <button
             onClick={handleWhatsApp}
-            className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white py-3 px-4 rounded-xl text-xs font-bold transition-colors cursor-pointer whitespace-nowrap shadow-md"
+            className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white py-3.5 px-4 rounded-xl text-xs font-bold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#25D366]/30 cursor-pointer whitespace-nowrap shadow-md group"
           >
-            <WhatsAppIcon className="w-4 h-4 text-white" />
-            <span>WhatsApp Line 1 / 2</span>
+            <WhatsAppIcon className="w-4 h-4 text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" />
+            <span>WhatsApp Inquiry</span>
           </button>
         </div>
 
