@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   Calendar, Clock, Phone, MapPin, Check, Plus, Trash2, Send, 
   CheckCircle2, User, Home, Building2, AlertCircle, 
-  Settings2, Copy, Flower2, ExternalLink, Sparkles
+  Copy, Flower2, ExternalLink, Sparkles
 } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 import { SPA_INFO, SPA_SERVICES } from '../data/spaData';
@@ -30,12 +30,6 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
   const [appointmentTime, setAppointmentTime] = useState('10:00 AM');
   const [preferredPhone] = useState<string>(SPA_INFO.phonePrimary);
   const [additionalNotes, setAdditionalNotes] = useState('');
-  
-  // Formspree configuration
-  const [customFormspreeEndpoint, setCustomFormspreeEndpoint] = useState<string>('');
-  const [showFormspreeModal, setShowFormspreeModal] = useState<boolean>(false);
-  const [isSubmittingFormspree, setIsSubmittingFormspree] = useState<boolean>(false);
-  const [formspreeSuccess, setFormspreeSuccess] = useState<boolean>(false);
 
   // Booking Confirmation State
   const [bookingConfirmed, setBookingConfirmed] = useState<boolean>(false);
@@ -94,7 +88,6 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
     appointmentTime,
     preferredPhone,
     additionalNotes,
-    formspreeEndpoint: customFormspreeEndpoint || undefined,
   };
 
   // Validate form
@@ -145,54 +138,15 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
     }
   };
 
-  // Handle Formspree or Online Booking Submission
-  const handleFormspreeSubmit = async (e: React.FormEvent) => {
+  // Handle Online Booking Reservation / Direct Inquiry
+  const handleDirectReservation = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
 
     const refId = `MK-${Math.floor(100000 + Math.random() * 900000)}`;
     setConfirmedBookingId(refId);
-    setIsSubmittingFormspree(true);
     setValidationError('');
-
-    const payload = {
-      bookingReference: refId,
-      clientName: fullName,
-      phone: phoneNumber,
-      whatsapp: whatsappNumber || phoneNumber,
-      serviceLocation: serviceType === 'in-spa' ? 'In-Spa (KM 5 LASU-Isheri Road)' : `VIP Home Service: ${homeAddress}`,
-      date: appointmentDate,
-      time: appointmentTime,
-      selectedTreatments: selectedServiceObjects.map(s => `${s.name} (₦${s.priceNaira.toLocaleString()})`).join(', '),
-      estimatedTotalNaira: `₦${totalPrice.toLocaleString()}`,
-      estimatedDurationMins: `${totalDuration} minutes`,
-      contactLine: preferredPhone,
-      clientNotes: additionalNotes || 'None',
-      submittedAt: new Date().toISOString()
-    };
-
-    try {
-      if (customFormspreeEndpoint.trim()) {
-        const res = await fetch(customFormspreeEndpoint.trim(), {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify(payload)
-        });
-
-        if (res.ok) {
-          setFormspreeSuccess(true);
-        }
-      }
-      setBookingConfirmed(true);
-    } catch (err) {
-      console.warn('Formspree dispatch notice:', err);
-      setBookingConfirmed(true);
-    } finally {
-      setIsSubmittingFormspree(false);
-    }
+    setBookingConfirmed(true);
   };
 
   const copyBookingReference = () => {
@@ -258,58 +212,7 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
               </a>
             </div>
           </div>
-
-          {/* Formspree endpoint customizer button */}
-          <div className="pt-1">
-            <button
-              onClick={() => setShowFormspreeModal(true)}
-              className="inline-flex items-center gap-1.5 text-xs text-stone-400 hover:text-white bg-[#14141A] px-3.5 py-1.5 rounded-full border border-stone-800 transition-colors cursor-pointer shadow-xs"
-            >
-              <Settings2 className="w-3.5 h-3.5 text-[#DE1B76]" />
-              <span>
-                {customFormspreeEndpoint ? 'Custom Formspree Endpoint Active' : 'Configure Formspree Endpoint (Optional)'}
-              </span>
-            </button>
-          </div>
         </div>
-
-        {/* Modal: Formspree endpoint setting */}
-        {showFormspreeModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-            <div className="bg-[#14141A] rounded-3xl p-6 sm:p-7 max-w-md w-full shadow-2xl border border-stone-800 space-y-4 text-left">
-              <div className="flex items-center justify-between">
-                <h3 className="font-bold text-lg text-white flex items-center gap-2">
-                  <Settings2 className="w-5 h-5 text-[#DE1B76]" />
-                  <span>Formspree Form Endpoint</span>
-                </h3>
-                <button
-                  onClick={() => setShowFormspreeModal(false)}
-                  className="text-stone-400 hover:text-white text-sm font-bold p-1 rounded-full hover:bg-stone-800"
-                >
-                  ✕
-                </button>
-              </div>
-              <p className="text-xs text-stone-400">
-                You can specify your custom Formspree URL (e.g. <code className="bg-stone-900 px-1 py-0.5 rounded text-pink-400 border border-stone-800">https://formspree.io/f/YOUR_ID</code>) to receive direct booking emails.
-              </p>
-              <input
-                type="url"
-                value={customFormspreeEndpoint}
-                onChange={(e) => setCustomFormspreeEndpoint(e.target.value)}
-                placeholder="https://formspree.io/f/your_form_id"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-stone-800 text-sm bg-stone-900 text-white focus:outline-none focus:ring-2 focus:ring-[#DE1B76]"
-              />
-              <div className="flex justify-end gap-2 pt-2">
-                <button
-                  onClick={() => setShowFormspreeModal(false)}
-                  className="px-5 py-2.5 text-xs font-bold uppercase tracking-widest bg-[#DE1B76] hover:bg-[#c41566] text-white rounded-full transition-colors cursor-pointer"
-                >
-                  Save & Close
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* If booking is confirmed, display confirmation pass */}
         {bookingConfirmed ? (
@@ -726,12 +629,11 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
 
                   <button
                     type="button"
-                    onClick={handleFormspreeSubmit}
-                    disabled={isSubmittingFormspree}
+                    onClick={handleDirectReservation}
                     className="w-full flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 active:scale-95 text-stone-200 hover:text-white py-3 px-4 rounded-xl font-bold text-xs uppercase tracking-wider border border-white/10 hover:border-white/20 hover:scale-[1.02] hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group"
                   >
                     <Calendar className="w-3.5 h-3.5 text-[#DE1B76] transition-transform duration-300 group-hover:scale-110" />
-                    <span>{isSubmittingFormspree ? 'Submitting Form...' : 'Send Web Inquiry'}</span>
+                    <span>Generate Booking Summary Pass</span>
                   </button>
                 </div>
 

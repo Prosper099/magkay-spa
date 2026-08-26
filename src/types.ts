@@ -42,7 +42,6 @@ export interface BookingFormData {
   appointmentTime: string;
   preferredPhone?: string;
   additionalNotes?: string;
-  formspreeEndpoint?: string;
 }
 
 export interface GalleryItem {
