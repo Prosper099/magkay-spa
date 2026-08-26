@@ -6,15 +6,12 @@ interface ImageWithLoadingProps extends React.ImgHTMLAttributes<HTMLImageElement
   fallbackSrc?: string;
 }
 
-// Neutral default fallback image in case any resource fails to load
-const DEFAULT_FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=1000&auto=format&fit=crop';
-
 export const ImageWithLoading: React.FC<ImageWithLoadingProps> = ({
   src,
   alt = 'MagKay Spa & Salon visual',
   className = '',
   wrapperClassName = '',
-  fallbackSrc = DEFAULT_FALLBACK_IMAGE,
+  fallbackSrc,
   onError,
   ...props
 }) => {
