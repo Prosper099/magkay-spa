@@ -30,54 +30,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onNavigate, onOpe
 
   return (
     <footer className="bg-[#0B0B0E] text-[#FAF7F2] pt-16 pb-12 border-t border-stone-800">
-      
-      {/* Contact Hotline Strip */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="bg-[#14141A] rounded-3xl p-6 sm:p-8 border border-stone-800 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xl">
-          <div className="space-y-1 text-center lg:text-left">
-            <div className="text-xs text-[#DE1B76] font-bold uppercase tracking-widest">
-              Direct Contact & Booking Desk
-            </div>
-            <h3 className="text-2xl sm:text-3xl font-serif text-white">
-              Ready to Book Your Session?
-            </h3>
-            <p className="text-xs sm:text-sm text-stone-400">
-              Reach our front desk along LASU-Isheri Road for quick appointments, inquiries, or VIP home service.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <a
-              href={`tel:${SPA_INFO.phoneCall}`}
-              className="inline-flex items-center gap-2 bg-white/10 hover:bg-[#DE1B76] active:scale-95 text-white px-5 py-3 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#DE1B76]/30 border border-white/10 hover:border-[#DE1B76] group cursor-pointer"
-            >
-              <Phone className="w-4 h-4 text-[#DE1B76] group-hover:text-white transition-all duration-300 group-hover:scale-110 group-hover:-rotate-12" />
-              <span>Call: {SPA_INFO.phoneCallFormatted}</span>
-            </a>
-
-            <a
-              href={SPA_INFO.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white px-5 py-3 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 shadow-lg hover:shadow-xl hover:shadow-[#25D366]/35 group cursor-pointer"
-            >
-              <WhatsAppIcon className="w-4 h-4 text-white transition-transform duration-300 group-hover:scale-115 group-hover:rotate-6" />
-              <span>WhatsApp: {SPA_INFO.phoneWhatsAppFormatted}</span>
-            </a>
-
-            <a
-              href={SPA_INFO.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-white/5 hover:bg-gradient-to-r hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] active:scale-95 text-stone-200 hover:text-white px-5 py-3 rounded-xl font-bold text-xs uppercase tracking-wider border border-white/10 hover:border-transparent transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-pink-500/30 group cursor-pointer"
-            >
-              <Instagram className="w-4 h-4 text-pink-400 group-hover:text-white transition-transform duration-300 group-hover:scale-115 group-hover:rotate-6" />
-              <span>Instagram</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
       {/* Main Footer Columns */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-stone-800">

@@ -34,11 +34,10 @@ export const GallerySection: React.FC = () => {
         <div className="flex flex-wrap items-center justify-center gap-2.5 mb-8">
           {[
             { id: 'all', label: 'All Highlights' },
-            { id: 'skincare', label: 'Facials & Glow' },
+            { id: 'skincare', label: 'Facials & Skincare' },
             { id: 'hair', label: 'Hair & Braids' },
             { id: 'nails', label: 'Nail Art & Glam' },
             { id: 'spa', label: 'Spa Suites' },
-            { id: 'barbershop', label: 'Barbershop' },
           ].map(tab => (
             <button
               key={tab.id}
@@ -130,9 +129,10 @@ export const GallerySection: React.FC = () => {
             </button>
 
             <div className="relative aspect-[4/3] bg-black">
-              <img
+              <ImageWithLoading
                 src={activeItem.image}
                 alt={activeItem.title}
+                wrapperClassName="w-full h-full"
                 className="w-full h-full object-cover"
               />
             </div>

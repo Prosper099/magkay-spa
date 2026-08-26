@@ -1,33 +1,34 @@
 import { SpaService, SkincareProduct, OperatingHoursDay, GalleryItem, Testimonial } from '../types';
 
 // Real and authentic MagKay Spa images
-import coverPhoto from '../assets/images/cover_photo.webp';
-import goldFacialTherapy from '../assets/images/gold_facial_therapy_1787604927665.jpg';
+import coverPhoto from '../assets/images/magkaybuilding.jpg';
+import goldFacialTherapy from '../assets/images/24kgold.jpg';
 import africanHairBraids from '../assets/images/african_hair_braids_1787604941612.jpg';
 import facialCleansingFoam from '../assets/images/facial_cleansing_foam_1787604954776.jpg';
 import skincareBottles from '../assets/images/magkay_skincare_bottles_1787604968547.jpg';
-import magkayLogo from '../assets/images/magkay_logo.jfif';
-import haircutPhoto from '../assets/images/haircut.jfif';
-import hairstylePhoto from '../assets/images/hairstyle.jfif';
-import skincarePhoto from '../assets/images/skincare.jfif';
-import productPhoto from '../assets/images/product.jfif';
+import magkayLogo from '../assets/images/magkaylogo.jpg';
+import haircutPhoto from '../assets/images/haircut.jpg';
+import hairstylePhoto from '../assets/images/hairstyle.jpg';
+import skincarePhoto from '../assets/images/skincare.jpg';
+import productPhoto from '../assets/images/product.jpg';
 
+// Clean absolute public image paths pointing to public directory assets
 export const SPA_ASSETS = {
-  logo: magkayLogo,
-  storefront: coverPhoto,
-  coverPhoto: coverPhoto,
-  goldFacial: goldFacialTherapy,
-  hairBraids: hairstylePhoto,
-  hairstyle: hairstylePhoto,
-  facialFoam: skincarePhoto,
-  deepCleansing: skincarePhoto,
-  skincare: skincarePhoto,
-  skincareBottles: productPhoto,
-  products: productPhoto,
-  product: productPhoto,
-  whiteningCream: productPhoto,
-  barbershop: haircutPhoto,
-  haircut: haircutPhoto,
+  logo: '/images/magkaylogo.jpg',
+  storefront: '/images/magkaybuilding.jpg',
+  coverPhoto: '/images/magkaybuilding.jpg',
+  goldFacial: '/images/24kgold.jpg',
+  hairBraids: '/images/hairstyle.jpg',
+  hairstyle: '/images/hairstyle.jpg',
+  facialFoam: '/images/skincare.jpg',
+  deepCleansing: '/images/skincare.jpg',
+  skincare: '/images/skincare.jpg',
+  skincareBottles: '/images/product.jpg',
+  products: '/images/product.jpg',
+  product: '/images/product.jpg',
+  whiteningCream: '/images/product.jpg',
+  barbershop: '/images/haircut.jpg',
+  haircut: '/images/haircut.jpg',
 };
 
 export const SPA_INFO = {
@@ -112,203 +113,60 @@ export const SPA_SERVICES: SpaService[] = [
     image: SPA_ASSETS.facialFoam
   },
   {
-    id: "magkay-whitening-body-therapy",
-    name: "MagKay Natural Skin Care Whitening Cream & Gluta Body Therapy",
+    id: "magkay-organic-skincare-therapy",
+    name: "MagKay Botanical Skincare & Rejuvenating Facial Therapy",
     category: "skincare",
     categoryLabel: "Skincare & Facials",
-    tagline: "Authentic MagKay Natural Skin Care Whitening Cream & Gluta Body Lotion treatment",
-    description: "Authentic MagKay Natural Skin Care therapy using our proprietary Whitening Cream (100g) and Gluta Whitening Body Lotion. Formulated with natural glutathione, nourishing vitamins, and botanical brightening extracts for glowing, spotless, and silky-smooth skin.",
+    tagline: "Deep herbal pore cleanse, blackhead extraction, and instant radiance hydration",
+    description: "An intensive skin rejuvenation and brightening facial utilizing MagKay's signature botanical formulas. Deeply purifies pores, extracts impurities, calms inflammation, and restores skin barrier health for a vibrant, spotless, and radiant complexion.",
     durationMinutes: 60,
-    priceNaira: 25000,
-    benefits: [
-      "Infused with authentic MagKay Whitening Cream & Gluta Body Lotion",
-      "Eliminates dead skin cells, sun tan & stubborn dark spots",
-      "Deeply moisturizes and restores natural glow with gentle botanical formula",
-      "Finished with MagKay Natural Skin Care hydrating seal"
-    ],
-    image: SPA_ASSETS.products
-  },
-  {
-    id: "knuckle-clearing-treatment",
-    name: "Dark Knuckle & Toe Intensive Clearing Treatment",
-    category: "skincare",
-    categoryLabel: "Skincare & Facials",
-    tagline: "Targeted hyperpigmentation correction for hands and feet",
-    description: "Specialized chemical micro-peel and lightening peptide treatment formulated specifically for stubborn dark knuckles, ankles, and toes without harsh peeling or burning.",
-    durationMinutes: 45,
-    priceNaira: 15000,
-    benefits: [
-      "Directly targets melanin clusters on joint areas",
-      "Smooths rough knuckle texture",
-      "Gentle botanical formula with zero bleaching agents",
-      "Includes take-home prep advice"
-    ],
-    image: "https://images.unsplash.com/photo-1608248597359-6e3e570ee1d6?q=80&w=1000&auto=format&fit=crop"
-  },
-
-  // Spa & Massage
-  {
-    id: "swedish-massage",
-    name: "Swedish Full Body Relaxation Massage",
-    category: "massage",
-    categoryLabel: "Spa & Massage",
-    tagline: "Melt away everyday Lagos stress and physical exhaustion",
-    description: "Classic therapeutic massage utilizing rhythmic, fluid effleurage strokes, warm essential oils, and gentle kneading to boost systemic circulation, soothe tense nerves, and deliver whole-body tranquility.",
-    durationMinutes: 60,
-    priceNaira: 25000,
-    isPopular: true,
-    isFeatured: true,
-    benefits: [
-      "Relieves work fatigue and road stress",
-      "Increases oxygen flow in the bloodstream",
-      "Promotes deep restorative sleep",
-      "Custom choice of lavender, eucalyptus, or warm vanilla oils"
-    ],
-    image: "https://images.unsplash.com/photo-1600334129128-685c5582fd35?q=80&w=1000&auto=format&fit=crop"
-  },
-  {
-    id: "deep-tissue-massage",
-    name: "Deep Tissue & Soothing Muscle Therapy",
-    category: "massage",
-    categoryLabel: "Spa & Massage",
-    tagline: "Targeted deep pressure to dissolve chronic knots and muscle aches",
-    description: "Engineered for clients dealing with lower back pain, stiff shoulders, and athletic tightness. Our licensed therapists apply focused, deliberate pressure along muscle bands to release chronic tension.",
-    durationMinutes: 75,
-    priceNaira: 30000,
-    benefits: [
-      "Breaks down stubborn muscle adhesions & knots",
-      "Alleviates lower back and neck stiffness",
-      "Improves range of motion and posture",
-      "Hot towel compression finish"
-    ],
-    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1000&auto=format&fit=crop"
-  },
-  {
-    id: "aromatherapy-hot-stone",
-    name: "Aromatherapy & Hot Stone Luxe Massage",
-    category: "massage",
-    categoryLabel: "Spa & Massage",
-    tagline: "Heated volcanic basalt stones combined with therapeutic botanical essences",
-    description: "The ultimate wellness indulgence. Smooth heated river stones are placed on key energy points and glided across muscles, allowing therapeutic heat to penetrate deep into joints and tissues.",
-    durationMinutes: 90,
-    priceNaira: 38000,
-    benefits: [
-      "Deep thermal muscle relaxation",
-      "Calms the nervous system and anxiety",
-      "Improves blood flow and toxin flush",
-      "Luxurious sensory rejuvenation"
-    ],
-    image: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=1000&auto=format&fit=crop"
-  },
-
-  // Nails & Glamour
-  {
-    id: "deluxe-pedicure-manicure",
-    name: "Deluxe Spa Manicure & Pedicure Combo",
-    category: "nails",
-    categoryLabel: "Nails & Glamour",
-    tagline: "Complete hand & foot rejuvenation with milk bath, scrub, and massage",
-    description: "Treat your extremities to absolute perfection. Includes warm floral antiseptic foot soak, callus removal with rasping blade, organic dead sea salt exfoliation, cuticle grooming, nourishing mask with heated booties, and high-shine buff or gel polish.",
-    durationMinutes: 75,
-    priceNaira: 18000,
-    isPopular: true,
-    benefits: [
-      "Eliminates cracked heels and hard calluses",
-      "Promotes clean, healthy nail beds and cuticles",
-      "Relaxes tired legs with calf massage",
-      "Long-lasting chip-resistant finish"
-    ],
-    image: "https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=1000&auto=format&fit=crop"
-  },
-  {
-    id: "acrylic-nails-art",
-    name: "Full Acrylic Extension & Encapsulated Nail Art",
-    category: "nails",
-    categoryLabel: "Nails & Glamour",
-    tagline: "Custom extensions, Russian manicure shaping, ombre & 3D chrome art",
-    description: "From minimalist French tips to glamorous 3D encapsulation, coffin, stiletto, or almond shapes. Sculpted with premium, non-yellowing acrylic monomer for superior durability and high-fashion elegance.",
-    durationMinutes: 90,
     priceNaira: 22000,
     isPopular: true,
     benefits: [
-      "Strong, lightweight & durable up to 4+ weeks",
-      "Precision apex shaping and cuticle sealant",
-      "Huge variety of Swarovski stones, chrome, and foils",
-      "Custom nail lengths tailored to your lifestyle"
+      "Deep pore ultrasonic cleansing & botanical steam therapy",
+      "Gentle extraction of blackheads, whiteheads & impurities",
+      "Calms hyperpigmentation & restores even skin tone",
+      "Nourishing herbal hydration mask & face massage"
     ],
-    image: "https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1000&auto=format&fit=crop"
-  },
-  {
-    id: "pro-makeup-glam",
-    name: "Professional Glam Makeup & Lashes",
-    category: "nails",
-    categoryLabel: "Nails & Glamour",
-    tagline: "Flawless camera-ready glam for weddings, birthdays, and red carpet events",
-    description: "High-definition makeup application using premium sweat-resistant cosmetics suited for the Nigerian climate. Includes skin prep, eyebrow sculpting, custom eyeshadow blend, contouring, and luxury mink lashes.",
-    durationMinutes: 60,
-    priceNaira: 25000,
-    benefits: [
-      "12-hour transfer-proof & sweat-proof finish",
-      "Custom color match for every Nigerian skin tone",
-      "Complimentary mink lash installation",
-      "Includes setting spray lock & mini touch-up kit"
-    ],
-    image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=1000&auto=format&fit=crop"
+    image: SPA_ASSETS.skincare
   },
 
   // Hair & Barbershop
   {
-    id: "hair-braiding-styling",
-    name: "Unisex Hair Braiding & Knotless Braids",
+    id: "mens-haircut-fade-grooming",
+    name: "Executive Precision Haircut & Beard Sculpting",
     category: "hair",
     categoryLabel: "Hair & Barbershop",
-    tagline: "Pain-free knotless braids, bohemian box braids, twists, and locs",
-    description: "Expert braiding done with gentle scalp tension techniques to protect your edges. Choose from waist-length knotless, bohemian curls, passion twists, cornrows, or dreadlock grooming.",
-    durationMinutes: 180,
-    priceNaira: 20000,
-    isPopular: true,
-    benefits: [
-      "Zero tension on delicate front edges",
-      "Neat, precise square or triangle parts",
-      "Hot water dipped and mousse-sealed",
-      "Long-lasting protective styling"
-    ],
-    image: SPA_ASSETS.hairBraids
-  },
-  {
-    id: "wig-installation-revamp",
-    name: "Lace Frontal Wig Installation & Revamping",
-    category: "hair",
-    categoryLabel: "Hair & Barbershop",
-    tagline: "Seamless HD lace melting, bleaching knots, customization & styling",
-    description: "Get that 'growing from the scalp' look. Our wig technicians bleach knots, custom-pluck natural hairline baby hairs, melt HD lace with waterproof adhesive, and style bone straight, body wave, or curls.",
-    durationMinutes: 90,
-    priceNaira: 18000,
-    benefits: [
-      "Undetectable melt line on all skin tones",
-      "Deep moisture washing and wig conditioning",
-      "Heat styling & silk pressing included",
-      "Secure adhesive hold lasting weeks"
-    ],
-    image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1000&auto=format&fit=crop"
-  },
-  {
-    id: "mens-executive-barbery",
-    name: "Executive Men's Haircut, Beard Sculpt & Facial",
-    category: "hair",
-    categoryLabel: "Hair & Barbershop",
-    tagline: "Sharp precision fade, beard trim, razor line-up, and mint hot towel wash",
-    description: "A premier barbershop experience for gentlemen. Includes custom clipper fade, beard detailing and oil nourishment, sharp razor lineup, organic black peel-off mask, and invigorating peppermint hot towel treatment.",
+    tagline: "Sharp skin fade, razor edge line-up, beard shaping, and soothing aftershave finish",
+    description: "Signature master haircut and precision grooming for gentlemen and boys. Performed with sterilized clippers, smooth gradient taper fade, razor-sharp edge-ups, beard oil nourishing treatment, and an invigorating hot towel finish.",
     durationMinutes: 45,
-    priceNaira: 10000,
+    priceNaira: 5000,
     isPopular: true,
     benefits: [
-      "Crisp, sharp hairline definition",
-      "Sterilized surgical-grade clippers & blades",
-      "Removes facial blackheads & ingrown hair bump prevention",
-      "Finished with aftershave cologne and beard shine"
+      "Razor-sharp edge-up & crisp hairline definition",
+      "Surgical-grade sanitized clippers & fresh single-use blades",
+      "Beard trimming, conditioning oil & bump-prevention aftershave",
+      "Invigorating peppermint hot towel scalp refresh"
     ],
-    image: SPA_ASSETS.barbershop
+    image: SPA_ASSETS.haircut
+  },
+  {
+    id: "african-hair-braiding-styling",
+    name: "African Hair Braiding, Knotless Braids & Salon Styling",
+    category: "hair",
+    categoryLabel: "Hair & Barbershop",
+    tagline: "Pain-free knotless box braids, goddess boho curls, cornrows, twists & salon styling",
+    description: "Artisan hair braiding and modern salon styling tailored for elegance and edge protection. Features gentle zero-tension parting, clean knotless braids, bohemian curly ends, protective cornrows, deep conditioning wash, and hot water mousse sealing.",
+    durationMinutes: 180,
+    priceNaira: 18000,
+    isPopular: true,
+    benefits: [
+      "Zero-tension technique protecting delicate baby hairs & edges",
+      "Crisp, neat geometric parting with premium edge control",
+      "Deep conditioning wash & moisturizing scalp treatment",
+      "Hot water dip & lightweight mousse seal for high shine"
+    ],
+    image: SPA_ASSETS.hairstyle
   },
 
   // Home Services
@@ -448,18 +306,26 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     instagramTag: "@magkayspa01"
   },
   {
-    id: "g-barber",
+    id: "g-skincare-session",
+    title: "Botanical Skincare & Deep Facial Therapy Session",
+    category: "skincare",
+    image: SPA_ASSETS.skincare,
+    caption: "Customized clinical facial, pore extractions, and herbal hydration therapy at MagKay Spa & Salon.",
+    instagramTag: "@magkayspa01"
+  },
+  {
+    id: "g-haircut",
     title: "Executive Precision Haircut & Beard Sculpting",
-    category: "barbershop",
-    image: SPA_ASSETS.barbershop,
-    caption: "Signature razor fade, beard detailing, and refreshing grooming at MagKay Barbershop desk.",
+    category: "hair",
+    image: SPA_ASSETS.haircut,
+    caption: "Signature fade, crisp razor edge-up, and beard grooming at MagKay Barbershop & Salon.",
     instagramTag: "@magkayspa01"
   },
   {
     id: "g3",
-    title: "Knotless Bohemian Braids Salon Styling",
+    title: "African Knotless Braids & Salon Styling",
     category: "hair",
-    image: SPA_ASSETS.hairBraids,
+    image: SPA_ASSETS.hairstyle,
     caption: "Seamless, tension-free knotless protective braids done in our modern styling chairs.",
     instagramTag: "@magkayspa01"
   },
@@ -506,9 +372,9 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Emeka Okoli",
     role: "Business Executive",
     location: "Igando / LASU Express, Lagos",
-    service: "Deep Tissue Massage & Executive Barbering",
+    service: "Deep Tissue Massage & Facial Rejuvenation",
     rating: 5,
-    comment: "Driving in Lagos traffic takes a heavy toll on my back. I booked their 75-minute deep tissue massage followed by a sharp haircut. The therapist knew exactly where every knot was. Worth every Naira!",
+    comment: "Driving in Lagos traffic takes a heavy toll on my back. I booked their 75-minute deep tissue massage followed by an organic skincare facial. The therapist knew exactly where every knot was, and my skin felt completely refreshed. Worth every Naira!",
     date: "1 month ago",
     verified: true
   },

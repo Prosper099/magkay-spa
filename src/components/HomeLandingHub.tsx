@@ -63,7 +63,7 @@ export const HomeLandingHub: React.FC<HomeLandingHubProps> = ({
                     Treatments Menu
                   </h3>
                   <p className="text-xs sm:text-sm text-stone-400 leading-relaxed">
-                    12+ services including 24K gold facials, Swedish massages, knotless braids, manicures & men's grooming.
+                    Signature 24K gold facials, botanical skincare, knotless hair braids, precision haircuts & VIP home service.
                   </p>
                 </div>
               </div>

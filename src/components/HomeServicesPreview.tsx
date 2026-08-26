@@ -2,6 +2,7 @@ import React from 'react';
 import { Clock, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { SPA_SERVICES } from '../data/spaData';
 import { SpaService } from '../types';
+import { ImageWithLoading } from './ImageWithLoading';
 
 interface HomeServicesPreviewProps {
   onNavigateToServices: () => void;
@@ -31,7 +32,7 @@ export const HomeServicesPreview: React.FC<HomeServicesPreviewProps> = ({
               Signature Salon & <span className="italic font-normal text-[#DE1B76]">Spa Services</span>
             </h2>
             <p className="text-sm sm:text-base text-stone-400">
-              Professional massages, clinical facials, hair styling, manicure-pedicure, and grooming performed by experienced therapists.
+              Clinical 24K gold facials, botanical skincare therapy, knotless hair braiding, executive barbering, and VIP home service.
             </p>
           </div>
 
@@ -41,7 +42,7 @@ export const HomeServicesPreview: React.FC<HomeServicesPreviewProps> = ({
             onClick={onNavigateToServices}
             className="inline-flex items-center gap-2 bg-[#1C1C24] hover:bg-[#DE1B76] active:scale-95 text-stone-200 hover:text-white border border-stone-700 hover:border-[#DE1B76] px-5 py-3 rounded-xl font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg hover:shadow-[#DE1B76]/20 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 cursor-pointer shrink-0 group"
           >
-            <span>View All 12+ Treatments</span>
+            <span>View Full Services Menu</span>
             <ArrowRight className="w-4 h-4 text-stone-400 group-hover:text-white transition-transform duration-300 group-hover:translate-x-1" />
           </button>
         </div>
@@ -56,13 +57,13 @@ export const HomeServicesPreview: React.FC<HomeServicesPreviewProps> = ({
               <div>
                 {/* Image Banner */}
                 <div className="relative aspect-[16/10] overflow-hidden bg-stone-900">
-                  <img
+                  <ImageWithLoading
                     src={service.image}
                     alt={service.name}
+                    wrapperClassName="w-full h-full"
                     className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
-                    loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#14141A] via-black/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#14141A] via-black/30 to-transparent pointer-events-none" />
 
                   {/* Category Pill */}
                   <div className="absolute top-3 left-3 flex gap-2">
@@ -135,9 +136,9 @@ export const HomeServicesPreview: React.FC<HomeServicesPreviewProps> = ({
         {/* Prominent Navigation Banner to Services Page */}
         <div className="mt-8 bg-[#14141A] rounded-2xl p-6 border border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl text-left">
           <div>
-            <h4 className="text-base font-bold text-white">Explore our complete 12+ treatment menu</h4>
+            <h4 className="text-base font-bold text-white">Explore our full beauty & grooming menu</h4>
             <p className="text-xs sm:text-sm text-stone-400 mt-0.5">
-              Swedish & Deep Tissue Massages, 24K Gold Facials, Knotless Braids, Frontal Wigs, Pedicure & Barbershop.
+              24K Gold Facials, Ultrasonic Deep Cleansing, Knotless Hair Braids, Executive Barbering & VIP Home Services.
             </p>
           </div>
           <button

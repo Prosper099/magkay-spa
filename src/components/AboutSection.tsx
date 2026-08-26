@@ -30,24 +30,24 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenBooking }) => 
             </p>
 
             <p className="text-sm sm:text-base text-stone-400 leading-relaxed">
-              Located at KM 5 (beside Ipaye Bus Stop), we provide Swedish and deep tissue body massage, clinical facials, frontal wig installations, knotless braiding, manicures, pedicures, and modern grooming. We operate as a registered Nigerian business enterprise: <strong className="text-white">BN-3380634</strong>.
+              Located at KM 5 (beside Ipaye Bus Stop), we provide 24K gold facial therapy, ultrasonic deep cleansing, knotless braiding, salon styling, master barbering, and VIP home wellness services. We operate as a registered Nigerian business enterprise: <strong className="text-white">BN-3380634</strong>.
             </p>
 
             {/* 3 Core Departments */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
               <div className="p-4 rounded-2xl bg-[#14141A] hover:bg-[#1A1A22] border border-stone-800 hover:border-[#DE1B76]/50 shadow-md hover:shadow-xl hover:shadow-[#DE1B76]/10 hover:scale-105 hover:-translate-y-1 transition-all duration-300 space-y-1.5 cursor-default">
-                <h4 className="font-bold text-sm text-white">Spa & Massages</h4>
-                <p className="text-xs text-stone-400">Swedish massages, body scrubs, and aromatherapy.</p>
+                <h4 className="font-bold text-sm text-white">24K Gold & Facials</h4>
+                <p className="text-xs text-stone-400">24K gold foil therapy, hydra glow, and deep pore extraction.</p>
               </div>
 
               <div className="p-4 rounded-2xl bg-[#14141A] hover:bg-[#1A1A22] border border-stone-800 hover:border-[#DE1B76]/50 shadow-md hover:shadow-xl hover:shadow-[#DE1B76]/10 hover:scale-105 hover:-translate-y-1 transition-all duration-300 space-y-1.5 cursor-default">
                 <h4 className="font-bold text-sm text-white">Hair & Barbershop</h4>
-                <p className="text-xs text-stone-400">Braiding, wig installations, nail art, and grooming.</p>
+                <p className="text-xs text-stone-400">Zero-tension knotless braiding, master fades & beard sculpting.</p>
               </div>
 
               <div className="p-4 rounded-2xl bg-[#14141A] hover:bg-[#1A1A22] border border-stone-800 hover:border-[#DE1B76]/50 shadow-md hover:shadow-xl hover:shadow-[#DE1B76]/10 hover:scale-105 hover:-translate-y-1 transition-all duration-300 space-y-1.5 cursor-default">
-                <h4 className="font-bold text-sm text-white">Clinical Skincare</h4>
-                <p className="text-xs text-stone-400">24K gold facials, hyperpigmentation care, and glow oils.</p>
+                <h4 className="font-bold text-sm text-white">Skincare & VIP Home</h4>
+                <p className="text-xs text-stone-400">Botanical skincare boutique & doorstep VIP wellness service.</p>
               </div>
             </div>
 

@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { SPA_SERVICES, SPA_INFO } from '../data/spaData';
 import { SpaService, ServiceCategory } from '../types';
+import { ImageWithLoading } from './ImageWithLoading';
 
 interface ServicesSectionProps {
   onSelectService: (serviceId: string) => void;
@@ -27,8 +28,6 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
   const categories: { id: ServiceCategory; label: string }[] = [
     { id: 'all', label: 'All Services' },
     { id: 'skincare', label: 'Skincare & Facials' },
-    { id: 'massage', label: 'Spa & Massages' },
-    { id: 'nails', label: 'Nails & Manicure' },
     { id: 'hair', label: 'Hair & Barbershop' },
     { id: 'home', label: 'VIP Home Service' },
   ];
@@ -92,7 +91,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
             <Search className="w-4 h-4 text-stone-500 absolute left-4 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search treatment (e.g. 24K Gold Facial, Swedish Massage, Knotless Braids, Pedicure)..."
+              placeholder="Search treatment (e.g. 24K Gold Facial, Knotless Braids, Executive Haircut, VIP Home Spa)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full bg-[#14141A] border border-stone-800 rounded-xl pl-11 pr-4 py-3 text-xs sm:text-sm text-white placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-[#DE1B76] shadow-sm"
@@ -149,13 +148,13 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
                 {/* Card Image Banner */}
                 <div>
                   <div className="relative aspect-[16/10] overflow-hidden bg-stone-900">
-                    <img
+                    <ImageWithLoading
                       src={service.image}
                       alt={service.name}
+                      wrapperClassName="w-full h-full"
                       className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
-                      loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#14141A] via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#14141A] via-transparent to-transparent pointer-events-none" />
 
                     {/* Badges */}
                     <div className="absolute top-3 left-3 flex gap-2">

@@ -2,6 +2,7 @@ import React from 'react';
 import { X, Clock, CheckCircle2, Calendar, ArrowRight } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 import { SpaService } from '../types';
+import { ImageWithLoading } from './ImageWithLoading';
 
 interface ServiceDetailModalProps {
   service: SpaService | null;
@@ -33,12 +34,13 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
         
         {/* Modal Header Banner Image */}
         <div className="relative aspect-[16/9] bg-stone-900 shrink-0">
-          <img
+          <ImageWithLoading
             src={service.image}
             alt={service.name}
+            wrapperClassName="w-full h-full"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#14141A] via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#14141A] via-black/40 to-transparent pointer-events-none" />
 
           <button
             onClick={onClose}
