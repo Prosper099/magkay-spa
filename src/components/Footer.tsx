@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   Phone, MapPin, Clock, Instagram, ShieldCheck, 
-  ArrowUp 
+  ArrowUp, ExternalLink 
 } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 import { SPA_INFO } from '../data/spaData';
@@ -159,13 +159,22 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onNavigate, onOpe
               </div>
             </div>
 
-            <div className="pt-2">
+            <div className="pt-2 space-y-2">
               <button
                 onClick={onOpenBooking}
                 className="w-full py-2.5 bg-[#DE1B76] hover:bg-[#c41566] rounded-xl text-xs font-bold uppercase tracking-wider text-white transition-colors cursor-pointer shadow-lg"
               >
                 Schedule Appointment
               </button>
+              <a
+                href={SPA_INFO.bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-2 px-3 bg-[#171722] hover:bg-[#20202E] border border-stone-700 hover:border-[#DE1B76] rounded-xl text-[11px] font-semibold text-stone-300 hover:text-white flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+              >
+                <span>Book on Setmore</span>
+                <ExternalLink className="w-3 h-3 text-[#DE1B76]" />
+              </a>
             </div>
           </div>
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   Calendar, Clock, Phone, MapPin, Check, Plus, Trash2, Send, 
   CheckCircle2, User, Home, Building2, AlertCircle, 
-  Settings2, Copy, Flower2
+  Settings2, Copy, Flower2, ExternalLink, Sparkles
 } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 import { SPA_INFO, SPA_SERVICES } from '../data/spaData';
@@ -227,11 +227,40 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
             Reserve Your <span className="not-italic font-bold font-sans text-[#DE1B76]">MagKay Session</span>
           </h2>
           <p className="text-base sm:text-lg text-stone-400">
-            Select your desired treatments, choose In-Spa or VIP Home Service, and confirm instantly via WhatsApp or web inquiry.
+            Book directly through our official Setmore scheduling portal or customize your package below for instant WhatsApp confirmation.
           </p>
 
+          {/* Prominent Official Setmore Online Booking Portal Card */}
+          <div className="pt-3 max-w-2xl mx-auto">
+            <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-r from-[#171722] via-[#221626] to-[#171722] border-2 border-[#DE1B76]/40 shadow-xl shadow-[#DE1B76]/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
+              <div className="space-y-1">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#DE1B76]/20 text-[#FF4B99] text-[10px] font-bold uppercase tracking-wider">
+                  <Sparkles className="w-3 h-3" />
+                  <span>Official Online Booking Portal</span>
+                </div>
+                <h3 className="text-base sm:text-lg font-bold text-white">
+                  MagKay Spa on Setmore
+                </h3>
+                <p className="text-xs text-stone-300">
+                  Pick your date, choose your specialist, and confirm real-time availability in seconds.
+                </p>
+              </div>
+
+              <a
+                id="setmore-direct-booking-btn"
+                href={SPA_INFO.bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#DE1B76] hover:bg-[#c41566] active:scale-95 text-white px-6 py-3 rounded-full font-bold text-xs uppercase tracking-wider shadow-lg shadow-[#DE1B76]/30 hover:scale-105 transition-all duration-300 shrink-0 cursor-pointer group"
+              >
+                <span>Book on Setmore</span>
+                <ExternalLink className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            </div>
+          </div>
+
           {/* Formspree endpoint customizer button */}
-          <div className="pt-2">
+          <div className="pt-1">
             <button
               onClick={() => setShowFormspreeModal(true)}
               className="inline-flex items-center gap-1.5 text-xs text-stone-400 hover:text-white bg-[#14141A] px-3.5 py-1.5 rounded-full border border-stone-800 transition-colors cursor-pointer shadow-xs"

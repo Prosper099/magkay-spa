@@ -52,6 +52,8 @@ export const SPA_INFO = {
   whatsappUrlSecondary: "https://wa.me/2348091537732",
   instagramHandle: "@magkayspa01",
   instagramUrl: "https://www.instagram.com/magkayspa01",
+  bookingUrl: "https://magkayspajbve.setmore.com/magkayspa",
+  setmoreUrl: "https://magkayspajbve.setmore.com/magkayspa",
   tagline: "Self-care isn't a luxury ☺️ it's a necessity",
   subheadline: "Your premier unisex salon and wellness haven on the LASU-Isheri Expressway. Step in to relax, recharge, and glow in confidence.",
   rating: "4.9",
@@ -426,7 +428,7 @@ export const ROUTE_DIRECTIONS = [
 export const FAQS = [
   {
     question: "How do I book an appointment at MagKay Spa?",
-    answer: "You can book directly using our website appointment form, or click any of the WhatsApp booking buttons to instantly chat with our booking desk on 08091537732 or 08135923223. We will confirm your preferred specialist and time slot in minutes."
+    answer: "You can book 24/7 online via our official Setmore booking portal (https://magkayspajbve.setmore.com/magkayspa), use our website appointment customizer, or chat directly with our Lagos booking desk on WhatsApp (08091537732 / 08135923223)."
   },
   {
     question: "Do you offer Home / Mobile VIP services?",
