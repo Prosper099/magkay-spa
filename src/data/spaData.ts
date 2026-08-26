@@ -1,33 +1,32 @@
 import { SpaService, SkincareProduct, OperatingHoursDay, GalleryItem, Testimonial } from '../types';
-
-// Real and authentic MagKay Spa images imported directly through Vite asset pipeline
-import coverPhoto from '../assets/images/magkaybuilding.jpg';
-import goldFacialTherapy from '../assets/images/24kgold.jpg';
-import africanHairBraids from '../assets/images/african_hair_braids_1787604941612.jpg';
-import facialCleansingFoam from '../assets/images/facial_cleansing_foam_1787604954776.jpg';
-import skincareBottles from '../assets/images/magkay_skincare_bottles_1787604968547.jpg';
-import magkayLogo from '../assets/images/magkaylogo.jpg';
-import haircutPhoto from '../assets/images/haircut.jpg';
-import hairstylePhoto from '../assets/images/hairstyle.jpg';
-import skincarePhoto from '../assets/images/skincare.jpg';
-import productPhoto from '../assets/images/product.jpg';
+import {
+  IMAGE_LOGO,
+  IMAGE_STOREFRONT,
+  IMAGE_GOLDFACIAL,
+  IMAGE_SKINCARE,
+  IMAGE_FACIALFOAM,
+  IMAGE_HAIRCUT,
+  IMAGE_HAIRSTYLE,
+  IMAGE_PRODUCTS,
+  IMAGE_SKINCAREBOTTLES,
+} from './embeddedImages';
 
 export const SPA_ASSETS = {
-  logo: magkayLogo,
-  storefront: coverPhoto,
-  coverPhoto: coverPhoto,
-  goldFacial: goldFacialTherapy,
-  hairBraids: hairstylePhoto || africanHairBraids,
-  hairstyle: hairstylePhoto,
-  facialFoam: skincarePhoto || facialCleansingFoam,
-  deepCleansing: skincarePhoto,
-  skincare: skincarePhoto,
-  skincareBottles: productPhoto || skincareBottles,
-  products: productPhoto,
-  product: productPhoto,
-  whiteningCream: productPhoto,
-  barbershop: haircutPhoto,
-  haircut: haircutPhoto,
+  logo: IMAGE_LOGO,
+  storefront: IMAGE_STOREFRONT,
+  coverPhoto: IMAGE_STOREFRONT,
+  goldFacial: IMAGE_GOLDFACIAL,
+  hairBraids: IMAGE_HAIRSTYLE,
+  hairstyle: IMAGE_HAIRSTYLE,
+  facialFoam: IMAGE_FACIALFOAM,
+  deepCleansing: IMAGE_SKINCARE,
+  skincare: IMAGE_SKINCARE,
+  skincareBottles: IMAGE_SKINCAREBOTTLES,
+  products: IMAGE_PRODUCTS,
+  product: IMAGE_PRODUCTS,
+  whiteningCream: IMAGE_PRODUCTS,
+  barbershop: IMAGE_HAIRCUT,
+  haircut: IMAGE_HAIRCUT,
 };
 
 export const SPA_INFO = {
