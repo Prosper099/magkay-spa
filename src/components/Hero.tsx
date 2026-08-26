@@ -35,11 +35,12 @@ export const Hero: React.FC<HeroProps> = ({
         {/* Prominent Full-Width Cover Photo Banner */}
         <div className="rounded-2xl sm:rounded-3xl overflow-hidden border border-stone-800 shadow-2xl bg-[#14141A]">
           <div className="relative aspect-[16/9] sm:aspect-[21/9] md:aspect-[2.4/1] max-h-[460px]">
-            <ImageWithLoading
+            <img
               src={SPA_ASSETS.storefront}
               alt="MagKay Spa & Salon official building at KM 5 LASU-Isheri Road Lagos"
-              wrapperClassName="w-full h-full"
               className="w-full h-full object-cover object-center"
+              loading="eager"
+              referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0E] via-black/30 to-transparent pointer-events-none" />
             <div className="absolute bottom-4 left-4 right-4 sm:left-6 sm:right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-2 text-white">
