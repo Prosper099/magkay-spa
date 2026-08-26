@@ -1,6 +1,6 @@
 import { SpaService, SkincareProduct, OperatingHoursDay, GalleryItem, Testimonial } from '../types';
 
-// Real and authentic MagKay Spa images
+// Real and authentic MagKay Spa images imported directly through Vite asset pipeline
 import coverPhoto from '../assets/images/magkaybuilding.jpg';
 import goldFacialTherapy from '../assets/images/24kgold.jpg';
 import africanHairBraids from '../assets/images/african_hair_braids_1787604941612.jpg';
@@ -12,23 +12,22 @@ import hairstylePhoto from '../assets/images/hairstyle.jpg';
 import skincarePhoto from '../assets/images/skincare.jpg';
 import productPhoto from '../assets/images/product.jpg';
 
-// Clean absolute public image paths pointing to public directory assets
 export const SPA_ASSETS = {
-  logo: '/images/magkaylogo.jpg',
-  storefront: '/images/magkaybuilding.jpg',
-  coverPhoto: '/images/magkaybuilding.jpg',
-  goldFacial: '/images/24kgold.jpg',
-  hairBraids: '/images/hairstyle.jpg',
-  hairstyle: '/images/hairstyle.jpg',
-  facialFoam: '/images/skincare.jpg',
-  deepCleansing: '/images/skincare.jpg',
-  skincare: '/images/skincare.jpg',
-  skincareBottles: '/images/product.jpg',
-  products: '/images/product.jpg',
-  product: '/images/product.jpg',
-  whiteningCream: '/images/product.jpg',
-  barbershop: '/images/haircut.jpg',
-  haircut: '/images/haircut.jpg',
+  logo: magkayLogo,
+  storefront: coverPhoto,
+  coverPhoto: coverPhoto,
+  goldFacial: goldFacialTherapy,
+  hairBraids: hairstylePhoto || africanHairBraids,
+  hairstyle: hairstylePhoto,
+  facialFoam: skincarePhoto || facialCleansingFoam,
+  deepCleansing: skincarePhoto,
+  skincare: skincarePhoto,
+  skincareBottles: productPhoto || skincareBottles,
+  products: productPhoto,
+  product: productPhoto,
+  whiteningCream: productPhoto,
+  barbershop: haircutPhoto,
+  haircut: haircutPhoto,
 };
 
 export const SPA_INFO = {
