@@ -4,7 +4,7 @@
   html {
     scroll-behavior: smooth;
     scrollbar-width: thin;
-    scrollbar-color: #DE1B76 #0B0B0E;
+    scrollbar-color: #3F3F4E #0B0B0E;
   }
 
   body {
@@ -12,7 +12,7 @@
     background-color: #0B0B0E;
     color: #F5F5F7;
     scrollbar-width: thin;
-    scrollbar-color: #DE1B76 #0B0B0E;
+    scrollbar-color: #3F3F4E #0B0B0E;
   }
 
   h1, h2, h3, .font-serif-luxury {
@@ -156,26 +156,30 @@
   box-shadow: 0 0 0 3px rgba(179, 139, 109, 0.15);
 }
 
-/* Custom Theme-Synchronized Scrollbar */
+/* Premium Minimalist Ash Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
   background: #0B0B0E;
-  border-left: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #DE1B76 0%, #9F0F4E 100%);
+  background: #383844;
   border-radius: 9999px;
-  border: 2px solid #0B0B0E;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background-color 0.2s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #FF4B99 0%, #DE1B76 100%);
-  box-shadow: 0 0 10px rgba(222, 27, 118, 0.5);
+  background: #525263;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #6E6E82;
 }
 
 ::-webkit-scrollbar-corner {
