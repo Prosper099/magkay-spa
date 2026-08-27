@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingBag, ArrowLeft, Check, ShieldCheck, CheckCircle2, MessageCircle, Heart, Info, X, Phone, Tag, ExternalLink } from 'lucide-react';
+import { ArrowLeft, Check, ShieldCheck, CheckCircle2, MessageCircle, Heart, Info, X, Phone, Tag, ExternalLink } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 import { SKINCARE_PRODUCTS, SPA_INFO } from '../data/spaData';
 import { SkincareProduct } from '../types';
@@ -68,10 +68,6 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({
 
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DE1B76]/10 border border-[#DE1B76]/30 text-[#DE1B76] text-xs font-bold uppercase tracking-wider mb-3">
-            <ShoppingBag className="w-3.5 h-3.5" />
-            <span>MagKay Skincare Boutique</span>
-          </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
             Original Glow Formulas & <span className="text-[#DE1B76] italic font-normal">Botanical Care</span>
           </h2>

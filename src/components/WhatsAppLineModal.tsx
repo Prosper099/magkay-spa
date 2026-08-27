@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, X, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Phone, X, ArrowRight } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 import { SPA_INFO } from '../data/spaData';
 
@@ -55,11 +55,6 @@ export const WhatsAppLineModal: React.FC<WhatsAppLineModalProps> = ({
 
         {/* Header */}
         <div className="space-y-2 pr-8 text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-stone-800/80 border border-stone-700 text-stone-200 text-xs font-semibold tracking-wide">
-            <Sparkles className="w-3.5 h-3.5 text-[#DE1B76]" />
-            <span>MagKay Official Contacts</span>
-          </div>
-          
           <h3 className="text-xl sm:text-2xl font-serif text-white leading-tight font-bold">
             {title}
           </h3>

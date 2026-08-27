@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   Calendar, Clock, Phone, MapPin, Check, Plus, Trash2, Send, 
   CheckCircle2, User, Home, Building2, AlertCircle, 
-  Copy, Flower2, ExternalLink, Sparkles
+  Copy, Flower2, ExternalLink
 } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 import { SPA_INFO, SPA_SERVICES } from '../data/spaData';
@@ -173,25 +173,17 @@ export const BookingSection: React.FC<BookingSectionProps> = ({
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#DE1B76]/15 border border-[#DE1B76]/30 text-[#FF4B99] text-[11px] font-bold uppercase tracking-widest backdrop-blur-sm">
-            <Calendar className="w-3.5 h-3.5 text-[#DE1B76]" />
-            <span>Fast-Track Appointment Desk</span>
-          </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif italic text-white">
             Reserve Your <span className="not-italic font-bold font-sans text-[#DE1B76]">MagKay Session</span>
           </h2>
           <p className="text-base sm:text-lg text-stone-400">
-            Book directly through our official Setmore scheduling portal or customize your package below for instant WhatsApp confirmation.
+            Book directly through our Setmore scheduling portal or customize your package below for instant WhatsApp confirmation.
           </p>
 
           {/* Prominent Official Setmore Online Booking Portal Card */}
           <div className="pt-3 max-w-2xl mx-auto">
             <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-r from-[#171722] via-[#221626] to-[#171722] border-2 border-[#DE1B76]/40 shadow-xl shadow-[#DE1B76]/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
               <div className="space-y-1">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#DE1B76]/20 text-[#FF4B99] text-[10px] font-bold uppercase tracking-wider">
-                  <Sparkles className="w-3 h-3" />
-                  <span>Official Online Booking Portal</span>
-                </div>
                 <h3 className="text-base sm:text-lg font-bold text-white">
                   MagKay Spa on Setmore
                 </h3>
