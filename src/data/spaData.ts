@@ -13,8 +13,8 @@ import {
 
 export const SPA_ASSETS = {
   logo: IMAGE_LOGO,
-  storefront: IMAGE_STOREFRONT,
-  coverPhoto: IMAGE_STOREFRONT,
+  storefront: '/coverphoto.jpg',
+  coverPhoto: '/coverphoto.jpg',
   goldFacial: IMAGE_GOLDFACIAL,
   hairBraids: IMAGE_HAIRSTYLE,
   hairstyle: IMAGE_HAIRSTYLE,

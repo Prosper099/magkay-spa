@@ -1,20 +1,18 @@
 import React from 'react';
 import { Calendar, CheckCircle2, Flower2, ShoppingBag } from 'lucide-react';
-import { WhatsAppIcon } from './WhatsAppIcon';
-import { SPA_INFO, SPA_ASSETS } from '../data/spaData';
+import { SPA_ASSETS } from '../data/spaData';
 
 interface HeroProps {
   onOpenBooking: () => void;
   onNavigateToServices: () => void;
   onNavigateToProducts: () => void;
-  onOpenWhatsAppModal: () => void;
+  onOpenWhatsAppModal?: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ 
   onOpenBooking,
   onNavigateToServices,
   onNavigateToProducts,
-  onOpenWhatsAppModal,
 }) => {
   return (
     <section id="home" className="relative pt-4 sm:pt-8 pb-10 sm:pb-16 lg:py-16 border-b border-stone-800/80">
@@ -51,24 +49,6 @@ export const Hero: React.FC<HeroProps> = ({
                 <div className="text-xs sm:text-base font-semibold text-stone-100 line-clamp-1 sm:line-clamp-none">
                   KM 5, Ipaye Bus Stop, LASU-Isheri Road, Lagos
                 </div>
-              </div>
-
-              <div className="flex items-center gap-2 pt-0.5 sm:pt-0 shrink-0">
-                <a
-                  href={`tel:${SPA_INFO.phoneCall}`}
-                  className="px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-lg bg-white/15 hover:bg-[#DE1B76] text-white font-semibold text-[11px] sm:text-xs transition-colors backdrop-blur-xs flex items-center justify-center cursor-pointer shadow-sm hover:scale-105 active:scale-95 min-h-[36px]"
-                  aria-label={`Call ${SPA_INFO.phoneCallFormatted}`}
-                >
-                  Call Desk
-                </a>
-                <button
-                  onClick={onOpenWhatsAppModal}
-                  className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-[11px] sm:text-xs transition-all flex items-center gap-1.5 cursor-pointer shadow-sm hover:scale-105 active:scale-95 min-h-[36px]"
-                  aria-label="Message on WhatsApp"
-                >
-                  <WhatsAppIcon className="w-3.5 h-3.5 text-white shrink-0" />
-                  <span>WhatsApp</span>
-                </button>
               </div>
             </div>
           </div>
