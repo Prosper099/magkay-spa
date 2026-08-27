@@ -23,7 +23,7 @@ export function generateBookingWhatsAppUrl(booking: BookingFormData, services: S
     return sum + (s ? s.durationMinutes : 0);
   }, 0);
 
-  const phoneChoice = '2348091537732';
+  const phoneChoice = SPA_INFO.phoneWhatsApp.replace(/^0/, '234');
 
   const message = `✨ *MAGKAY SPA & SALON - APPOINTMENT BOOKING* ✨
 

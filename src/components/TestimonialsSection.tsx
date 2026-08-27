@@ -44,12 +44,6 @@ export const TestimonialsSection: React.FC = () => {
               <div className="pt-3 border-t border-stone-800 space-y-1">
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-sm text-white group-hover:text-[#DE1B76] transition-colors">{testi.name}</span>
-                  {testi.verified && (
-                    <span className="inline-flex items-center gap-1 text-[10px] text-emerald-400 font-semibold bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800">
-                      <CheckCircle className="w-3 h-3 text-emerald-400" />
-                      Verified
-                    </span>
-                  )}
                 </div>
                 <div className="text-xs text-stone-400">{testi.role}</div>
                 <div className="text-[11px] text-[#FF4B99] font-semibold">{testi.service}</div>

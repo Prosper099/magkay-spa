@@ -47,7 +47,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
     if (onOpenWhatsAppModalWithMsg) {
       onOpenWhatsAppModalWithMsg(msg);
     } else {
-      window.open(`https://wa.me/2348091537732?text=${encodeURIComponent(msg)}`, '_blank');
+      window.open(`https://wa.me/${SPA_INFO.phoneWhatsApp.replace(/^0/, '234')}?text=${encodeURIComponent(msg)}`, '_blank');
     }
   };
 

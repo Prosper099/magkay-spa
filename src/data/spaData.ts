@@ -36,19 +36,19 @@ export const SPA_INFO = {
   foundedYear: "2021",
   address: "KM 5, Ipaye Bus Stop, LASU-Isheri Road, Iba Ojo, Lagos, Nigeria",
   landmark: "Beside Ipaye Bus Stop, opposite Ojo Local Govt Area Corridor, LASU-Isheri Express",
-  phoneCall: "08135923223",
-  phoneCallFormatted: "0813 592 3223",
-  phoneWhatsApp: "08091537732",
-  phoneWhatsAppFormatted: "0809 153 7732",
-  phonePrimary: "08135923223", // Call line (Line 1)
-  phoneSecondary: "08091537732", // WhatsApp line (Line 2)
-  phoneCallIntl: "+2348135923223",
-  phoneWhatsAppIntl: "+2348091537732",
+  phoneCall: "08091537732",
+  phoneCallFormatted: "0809 153 7732",
+  phoneWhatsApp: "08135923223",
+  phoneWhatsAppFormatted: "0813 592 3223",
+  phonePrimary: "08135923223", // WhatsApp & Primary line
+  phoneSecondary: "08091537732", // Call line (Line 2)
+  phoneCallIntl: "+2348091537732",
+  phoneWhatsAppIntl: "+2348135923223",
   phonePrimaryIntl: "+2348135923223",
   phoneSecondaryIntl: "+2348091537732",
-  callUrl: "tel:08135923223",
-  whatsappUrl: "https://wa.me/2348091537732",
-  whatsappUrlPrimary: "https://wa.me/2348091537732",
+  callUrl: "tel:08091537732",
+  whatsappUrl: "https://wa.me/2348135923223",
+  whatsappUrlPrimary: "https://wa.me/2348135923223",
   whatsappUrlSecondary: "https://wa.me/2348091537732",
   instagramHandle: "@magkayspa01",
   instagramUrl: "https://www.instagram.com/magkayspa01",
@@ -428,7 +428,7 @@ export const ROUTE_DIRECTIONS = [
 export const FAQS = [
   {
     question: "How do I book an appointment at MagKay Spa?",
-    answer: "You can book 24/7 online via our official Setmore booking portal (https://magkayspajbve.setmore.com/magkayspa), use our website appointment customizer, or chat directly with our Lagos booking desk on WhatsApp (08091537732 / 08135923223)."
+    answer: "You can book 24/7 online via our official Setmore booking portal (https://magkayspajbve.setmore.com/magkayspa), use our website appointment customizer, or chat directly with our Lagos booking desk on WhatsApp (08135923223 / 08091537732)."
   },
   {
     question: "Do you offer Home / Mobile VIP services?",

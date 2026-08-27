@@ -23,7 +23,7 @@ export const WhatsAppLineModal: React.FC<WhatsAppLineModalProps> = ({
   const defaultMsg = customMessage || "Hello MagKay Spa, I would like to make an inquiry / book a wellness appointment.";
   const encodedMsg = encodeURIComponent(defaultMsg);
 
-  const whatsappUrl = `https://wa.me/2348091537732?text=${encodedMsg}`;
+  const whatsappUrl = `https://wa.me/${SPA_INFO.phoneWhatsApp.replace(/^0/, '234')}?text=${encodedMsg}`;
   const callUrl = `tel:${SPA_INFO.phoneCall}`;
 
   const handleOpenWhatsApp = () => {
@@ -87,7 +87,7 @@ export const WhatsAppLineModal: React.FC<WhatsAppLineModalProps> = ({
                   <span className="text-xs font-bold uppercase tracking-wider text-[#25D366]">
                     WhatsApp Chat
                   </span>
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-semibold border border-emerald-500/30">
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-stone-200 font-semibold border border-white/10">
                     Instant Messaging
                   </span>
                 </div>
@@ -156,13 +156,9 @@ export const WhatsAppLineModal: React.FC<WhatsAppLineModalProps> = ({
           </div>
         )}
 
-        {/* Verification Footer Note */}
+        {/* Footer Note */}
         <div className="pt-3 border-t border-stone-800/80 flex items-center justify-between text-[11px] text-stone-400">
-          <span className="flex items-center gap-1.5 text-stone-300">
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Verified LASU-Isheri Spa Desk</span>
-          </span>
-          <span className="font-mono text-stone-500">RC: 7215984</span>
+          <span className="text-stone-300">KM 5, Ipaye Bus Stop, LASU-Isheri Road, Lagos</span>
         </div>
 
       </div>

@@ -179,38 +179,22 @@ export const LocationHoursSection: React.FC<LocationHoursSectionProps> = ({ onOp
                 Reach our team directly for appointment bookings, VIP home service requests, or glowing skincare product orders:
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                {/* Direct Call Button (Styled like the WhatsApp action button) */}
                 <a
                   href={`tel:${SPA_INFO.phoneCall}`}
-                  className="p-3 bg-[#1C1C24] hover:bg-[#252530] rounded-2xl border border-[#DE1B76]/40 hover:border-[#DE1B76] transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 active:scale-95 shadow-sm hover:shadow-lg hover:shadow-[#DE1B76]/15 flex items-center gap-3 group"
+                  className="w-full flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#DE1B76] to-[#c41566] hover:from-[#c41566] hover:to-[#a91256] active:scale-95 text-white py-3.5 px-4 rounded-2xl font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#DE1B76]/30 cursor-pointer hover:scale-105 hover:-translate-y-0.5 group"
                 >
-                  <Phone className="w-4 h-4 text-[#DE1B76] shrink-0 group-hover:scale-110 transition-transform" />
-                  <div>
-                    <div className="text-[10px] text-stone-400 font-semibold uppercase">Direct Voice Call</div>
-                    <div className="text-xs font-bold text-white font-mono group-hover:text-[#FF4B99] transition-colors">{SPA_INFO.phoneCallFormatted}</div>
-                  </div>
+                  <Phone className="w-4 h-4 text-white transition-transform duration-300 group-hover:scale-110" />
+                  <span>Call Us ({SPA_INFO.phoneCallFormatted})</span>
                 </a>
 
+                {/* Chat on WhatsApp Button */}
                 <a
                   href={SPA_INFO.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-[#1C1C24] hover:bg-[#252530] rounded-2xl border border-[#25D366]/40 hover:border-[#25D366] transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 active:scale-95 shadow-sm hover:shadow-lg hover:shadow-[#25D366]/15 flex items-center gap-3 group"
-                >
-                  <WhatsAppIcon className="w-4 h-4 text-[#25D366] shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-transform" />
-                  <div>
-                    <div className="text-[10px] text-stone-400 font-semibold uppercase">Official WhatsApp</div>
-                    <div className="text-xs font-bold text-white font-mono group-hover:text-emerald-400 transition-colors">{SPA_INFO.phoneWhatsAppFormatted}</div>
-                  </div>
-                </a>
-              </div>
-
-              <div className="pt-1">
-                <a
-                  href={SPA_INFO.whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white py-3.5 rounded-2xl font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#25D366]/30 cursor-pointer hover:scale-105 hover:-translate-y-0.5 group"
+                  className="w-full flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white py-3.5 px-4 rounded-2xl font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#25D366]/30 cursor-pointer hover:scale-105 hover:-translate-y-0.5 group"
                 >
                   <WhatsAppIcon className="w-4 h-4 text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6" />
                   <span>Chat on WhatsApp ({SPA_INFO.phoneWhatsAppFormatted})</span>

@@ -42,14 +42,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onNavigate, onOpe
               Self-care isn't a luxury — it's a necessity. MagKay Spa provides professional hair styling, massages, nails, barbershop, and clinical skincare along LASU-Isheri Expressway, Lagos.
             </p>
 
-            {/* Registration Marker */}
+            {/* Location Marker */}
             <div className="p-3.5 rounded-2xl bg-[#14141A] border border-stone-800 text-xs text-stone-300 space-y-1">
               <div className="flex items-center gap-2 text-white font-bold">
-                <ShieldCheck className="w-4 h-4 text-[#DE1B76]" />
-                <span>Registered Business Enterprise</span>
+                <MapPin className="w-4 h-4 text-[#DE1B76]" />
+                <span>KM 5, LASU-Isheri Road, Lagos</span>
               </div>
-              <div className="text-stone-400 font-mono">
-                CAC Reg: <strong className="text-white">{SPA_INFO.registrationNumber}</strong> (Nigeria)
+              <div className="text-stone-400">
+                Unisex Beauty, Salon & Wellness Haven
               </div>
             </div>
 
