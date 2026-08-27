@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, CheckCircle2, ShieldCheck, ArrowRight, ShoppingBag, Flower2, Heart } from 'lucide-react';
+import { Calendar, CheckCircle2, ShieldCheck, ArrowRight, Flower2, Heart, ShoppingBag } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 import { SPA_INFO, SPA_ASSETS } from '../data/spaData';
 import { ImageWithLoading } from './ImageWithLoading';
@@ -28,7 +28,7 @@ export const Hero: React.FC<HeroProps> = ({
             <span className="italic text-[#DE1B76] font-normal">it’s a necessity.</span>
           </h1>
           <p className="text-sm sm:text-base md:text-lg text-stone-300 leading-relaxed font-normal">
-            MagKay Spa is a registered unisex beauty, salon, and wellness center in Lagos. From 24K gold therapy and knotless braiding to precision barbering and clinical skincare.
+            MagKay Spa is a registered unisex beauty, salon, and wellness center in Lagos. From 24K gold therapy and knotless braiding to precision barbering, massage treatments, and botanical skincare.
           </p>
         </div>
 
@@ -85,7 +85,7 @@ export const Hero: React.FC<HeroProps> = ({
               className="p-3.5 sm:p-4 rounded-2xl bg-[#17171F] hover:bg-[#20202B] active:scale-95 border border-stone-800 hover:border-[#DE1B76] shadow-sm hover:shadow-lg hover:shadow-[#DE1B76]/10 text-left transition-all duration-300 hover:scale-[1.03] hover:-translate-y-0.5 group cursor-pointer"
             >
               <div className="text-[11px] font-bold uppercase tracking-wider text-[#DE1B76] flex items-center justify-between">
-                <span>FACIALS & SKINCARE</span>
+                <span>FACIALS & MASSAGES</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
               </div>
               <div className="text-xs text-stone-300 font-medium mt-1">24K gold & hydra facials</div>
@@ -135,8 +135,8 @@ export const Hero: React.FC<HeroProps> = ({
                   onClick={onNavigateToServices}
                   className="inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-[#17171F] hover:bg-[#22222E] active:scale-95 text-stone-100 hover:text-white px-4 sm:px-5 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider border border-stone-700 hover:border-[#DE1B76]/60 hover:scale-105 hover:-translate-y-0.5 hover:shadow-md transition-all duration-300 cursor-pointer shadow-xs min-h-[44px] group"
                 >
+                  <Flower2 className="w-3.5 h-3.5 text-[#DE1B76] transition-transform duration-300 group-hover:scale-110" />
                   <span>Services</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-stone-400 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-[#DE1B76]" />
                 </button>
 
                 <button
@@ -174,3 +174,4 @@ export const Hero: React.FC<HeroProps> = ({
     </section>
   );
 };
+

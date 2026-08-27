@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   ArrowRight, ShoppingBag, Calendar, Camera, 
-  MapPin, Clock, Phone, MessageCircle, Flower2, Heart, ShieldCheck, Gem
+  MapPin, Clock, Phone, MessageCircle, Flower2, Heart, ShieldCheck, Award
 } from 'lucide-react';
 import { Hero } from './Hero';
 import { SPA_INFO, getLagosOpeningStatus } from '../data/spaData';

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Phone, Menu, X, Calendar, ChevronRight, Home, Sparkles, ShoppingBag, Image, Award, MapPin, MessageCircle, Clock, ShieldCheck, Wifi } from 'lucide-react';
+import { Phone, Menu, X, Calendar, ChevronRight, Home, Flower2, ShoppingBag, Image, Award, MapPin, MessageCircle, Clock, ShieldCheck, Wifi } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 import { SPA_INFO } from '../data/spaData';
 import { MagkayLogo } from './MagkayLogo';
@@ -76,7 +76,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       name: 'Services & Treatment Menu',
       subtitle: 'Facials, massages, hair styling, nails & waxing',
       page: 'services',
-      icon: Sparkles,
+      icon: Flower2,
       badge: '12+ Services',
       badgeColor: 'bg-[#DE1B76] text-white',
     },

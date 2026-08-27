@@ -71,9 +71,9 @@ Can you please share available time slots at your KM 5 LASU-Isheri center or hom
 export function generateProductOrderUrl(product: SkincareProduct, quantity: number = 1, phone: string = SPA_INFO.phoneWhatsApp): string {
   const cleanPhone = phone.replace(/^0/, '234');
   const totalPrice = product.priceNaira * quantity;
-  const message = `Hello MagKay Skincare Team! ✨
+  const message = `Hello MagKay Skincare Team! 🛍️
 I would like to order:
-🛍️ *Product:* ${product.name} (${product.size})
+✨ *Product:* ${product.name} (${product.size})
 📦 *Quantity:* ${quantity}
 💰 *Total:* ₦${totalPrice.toLocaleString()}
 

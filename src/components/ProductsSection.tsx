@@ -1,314 +1,338 @@
 import React, { useState } from 'react';
-import { ShoppingBag, Check, ShieldCheck, Heart, ArrowLeft, Search, Flower2, Gem } from 'lucide-react';
+import { ShoppingBag, ArrowLeft, Check, ShieldCheck, CheckCircle2, MessageCircle, Heart, Info, X, Phone, Tag, ExternalLink } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 import { SKINCARE_PRODUCTS, SPA_INFO } from '../data/spaData';
 import { SkincareProduct } from '../types';
+import { generateProductOrderUrl } from '../utils/whatsapp';
 import { ImageWithLoading } from './ImageWithLoading';
 
 interface ProductsSectionProps {
-  onNavigateHome?: () => void;
   isStandalonePage?: boolean;
+  onNavigateHome?: () => void;
   onOpenWhatsAppModalWithMsg?: (msg: string) => void;
 }
 
 export const ProductsSection: React.FC<ProductsSectionProps> = ({
-  onNavigateHome,
   isStandalonePage = false,
-  onOpenWhatsAppModalWithMsg
+  onNavigateHome,
+  onOpenWhatsAppModalWithMsg,
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [quantities, setQuantities] = useState<Record<string, number>>({
-    'egyptian-body-milk': 1,
-    'snow-white-cream': 1,
-    'glow-face-cleanser': 1,
-    'knuckle-clearing-cream': 1,
-    'botanical-glow-oil': 1,
-  });
+  const [activeModalProduct, setActiveModalProduct] = useState<SkincareProduct | null>(null);
+  const [orderQuantity, setOrderQuantity] = useState<number>(1);
+  const [addedAnimationId, setAddedAnimationId] = useState<string | null>(null);
 
-  const categories = ['all', 'Body Care', 'Face Care', 'Cleansers', 'Specialty Care', 'Body Oils'];
-
-  const handleQtyChange = (id: string, delta: number) => {
-    setQuantities(prev => {
-      const current = prev[id] || 1;
-      const next = Math.max(1, Math.min(10, current + delta));
-      return { ...prev, [id]: next };
-    });
-  };
+  const categories = [
+    { id: 'all', label: 'All Products' },
+    { id: 'Body & Face Care', label: 'Body & Sets' },
+    { id: 'Face Care', label: 'Face Creams' },
+    { id: 'Cleansers', label: 'Clarifying Washes' },
+    { id: 'Specialty Care', label: 'Knuckle Treatments' },
+    { id: 'Body Oils', label: 'Glow Oils' },
+  ];
 
   const filteredProducts = SKINCARE_PRODUCTS.filter(p => {
-    const matchesCategory = selectedCategory === 'all' || p.category === selectedCategory;
-    const matchesSearch = searchQuery === '' ||
-      p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.tagline.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.keyIngredients.some(ing => ing.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesCategory && matchesSearch;
+    if (selectedCategory === 'all') return true;
+    return p.category === selectedCategory;
   });
 
-  const handleOrderProduct = (product: SkincareProduct) => {
-    const qty = quantities[product.id] || 1;
-    const total = product.priceNaira * qty;
-    const msg = `🛍️ *MAGKAY SKINCARE ORDER* 🛍️\n\nHello MagKay Spa, I would like to order:\n- *Product:* ${product.name}\n- *Size:* ${product.size}\n- *Quantity:* ${qty}\n- *Estimated Total:* ₦${total.toLocaleString()}\n\nPlease confirm product availability and pickup/delivery options.`;
-    
-    if (onOpenWhatsAppModalWithMsg) {
-      onOpenWhatsAppModalWithMsg(msg);
-    } else {
-      window.open(`https://wa.me/2348091537732?text=${encodeURIComponent(msg)}`, '_blank');
-    }
+  const handleOrderWhatsApp = (product: SkincareProduct, qty: number = 1) => {
+    setAddedAnimationId(product.id);
+    setTimeout(() => setAddedAnimationId(null), 2000);
+
+    const waUrl = generateProductOrderUrl(product, qty, SPA_INFO.phoneWhatsApp);
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  const openDetailsModal = (product: SkincareProduct) => {
+    setActiveModalProduct(product);
+    setOrderQuantity(1);
   };
 
   return (
-    <section id="products" className="py-12 lg:py-16 scroll-mt-20">
+    <section id="products-section" className="py-8 sm:py-12 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Breadcrumb & Navigation if on dedicated page */}
-        {isStandalonePage && (
-          <div className="mb-8 flex items-center justify-between flex-wrap gap-4 pb-4 border-b border-stone-800">
+        {/* Standalone Back Button */}
+        {isStandalonePage && onNavigateHome && (
+          <div className="mb-6">
             <button
               onClick={onNavigateHome}
-              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-stone-300 hover:text-white transition-colors cursor-pointer bg-[#17171F] px-4 py-2 rounded-xl border border-stone-700 shadow-2xs"
+              className="inline-flex items-center gap-2 text-stone-400 hover:text-white px-3.5 py-2 rounded-xl bg-stone-900/80 border border-stone-800 hover:border-stone-700 text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back to Home</span>
             </button>
-            <div className="text-xs text-stone-400 font-medium">
-              <span>Home</span> <span className="mx-1.5">/</span> <strong className="text-white">Skincare Boutique</strong>
-            </div>
           </div>
         )}
 
-        {/* Section Header */}
-        <div className="max-w-3xl mb-10 space-y-2 text-left">
-          <div className="text-xs uppercase font-bold tracking-widest text-[#DE1B76]">
-            MagKay Skincare Line
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DE1B76]/10 border border-[#DE1B76]/30 text-[#DE1B76] text-xs font-bold uppercase tracking-wider mb-3">
+            <ShoppingBag className="w-3.5 h-3.5" />
+            <span>MagKay Skincare Boutique</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-white">
-            Botanical Skincare <span className="italic font-normal text-[#DE1B76]">& Glow Care</span>
-          </h1>
-          <p className="text-sm sm:text-base text-stone-400">
-            Formulated to hydrate, restore radiance, and clarify hyperpigmentation safely without hydroquinone or harmful bleaching agents.
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-4">
+            Original Glow Formulas & <span className="text-[#DE1B76] italic font-normal">Botanical Care</span>
+          </h2>
+          <p className="text-sm sm:text-base text-stone-300 leading-relaxed">
+            Formulated for African and tropical climates. Pure active botanicals, gentle brightening gluta lotions, and concentrated facial cleansers available directly from our Lagos center.
           </p>
         </div>
 
-        {/* Search & Category Filter Toolbar */}
-        <div className="max-w-4xl mb-10 space-y-4">
-          <div className="relative">
-            <Search className="w-4 h-4 text-stone-500 absolute left-4 top-1/2 -translate-y-1/2" />
-            <input
-              type="text"
-              placeholder="Search products (e.g. Egyptian Milk, Glutathione, Niacinamide, Knuckle cream)..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#14141A] border border-stone-800 rounded-xl pl-11 pr-4 py-3 text-xs sm:text-sm text-white placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-[#DE1B76] shadow-sm"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-stone-400 hover:text-white cursor-pointer"
-              >
-                Clear
-              </button>
-            )}
-          </div>
-
-          <div className="flex items-center justify-start overflow-x-auto pb-2 gap-2 scrollbar-none">
-            {categories.map((cat) => {
-              const isActive = selectedCategory === cat;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2.5 rounded-xl font-bold text-xs whitespace-nowrap transition-all duration-200 cursor-pointer active:scale-95 ${
-                    isActive
-                      ? 'bg-[#DE1B76] text-white shadow-md shadow-[#DE1B76]/30 scale-105'
-                      : 'bg-[#14141A] text-stone-400 hover:text-white hover:bg-stone-800/90 border border-stone-800 hover:border-stone-700 hover:scale-105'
-                  }`}
-                >
-                  <span>{cat === 'all' ? 'All Formulas' : cat}</span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Product Cards Grid */}
-        {filteredProducts.length === 0 ? (
-          <div className="text-center py-16 bg-[#14141A] rounded-2xl border border-stone-800 max-w-md mx-auto">
-            <p className="text-base text-stone-300 font-medium">No products matched "{searchQuery}"</p>
+        {/* Category Pills */}
+        <div className="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
+          {categories.map((cat) => (
             <button
-              onClick={() => { setSearchQuery(''); setSelectedCategory('all'); }}
-              className="mt-3 text-xs font-bold text-[#DE1B76] underline cursor-pointer"
+              key={cat.id}
+              onClick={() => setSelectedCategory(cat.id)}
+              className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                selectedCategory === cat.id
+                  ? 'bg-[#DE1B76] text-white shadow-lg shadow-[#DE1B76]/25 scale-105'
+                  : 'bg-[#14141A] text-stone-400 hover:text-white border border-stone-800 hover:border-stone-700'
+              }`}
             >
-              Reset Filters
+              {cat.label}
             </button>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {filteredProducts.map((product) => {
-              const qty = quantities[product.id] || 1;
-              return (
-                <div
-                  key={product.id}
-                  className="bg-[#14141A] rounded-2xl overflow-hidden border border-stone-800 shadow-lg hover:shadow-2xl hover:shadow-[#DE1B76]/15 hover:border-[#DE1B76]/60 hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
-                >
-                  {/* Top Image + Badges */}
-                  <div>
-                    <div className="relative aspect-[4/3] overflow-hidden bg-stone-900">
-                      <ImageWithLoading
-                        src={product.image}
-                        alt={product.name}
-                        wrapperClassName="w-full h-full group-hover:scale-108 transition-transform duration-700 ease-out"
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#14141A] via-transparent to-transparent pointer-events-none" />
-                      
-                      {/* Top Badges */}
-                      <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-                        <span className="bg-black/80 backdrop-blur-md text-stone-200 border border-white/10 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider group-hover:border-[#DE1B76]/50 transition-colors">
-                          {product.category}
-                        </span>
-                        <span className="bg-[#DE1B76]/90 text-white px-2.5 py-1 rounded-full text-[10px] font-bold font-mono shadow-sm">
-                          {product.size}
-                        </span>
-                      </div>
+          ))}
+        </div>
 
-                      {/* In Stock & Price overlay */}
-                      <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
-                        <div className="flex items-center gap-1.5 text-xs text-stone-300 bg-black/70 px-2.5 py-1 rounded-lg border border-white/10 group-hover:border-[#25D366]/40 transition-colors">
-                          <Check className="w-3.5 h-3.5 text-[#25D366]" />
-                          <span>In Stock</span>
-                        </div>
-                        <div className="font-serif italic text-2xl font-bold text-[#FF4B99] drop-shadow-sm group-hover:scale-105 transition-transform duration-300">
-                          ₦{product.priceNaira.toLocaleString()}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Card Content */}
-                    <div className="p-6 space-y-4 text-left">
-                      <div>
-                        <h3 className="text-lg font-bold text-white group-hover:text-[#DE1B76] transition-colors leading-snug">
-                          {product.name}
-                        </h3>
-                        <p className="text-xs text-stone-400 font-medium italic mt-0.5">
-                          "{product.tagline}"
-                        </p>
-                      </div>
-
-                      <p className="text-xs sm:text-sm text-stone-300 leading-relaxed">
-                        {product.description}
-                      </p>
-
-                      {/* Key Active Ingredients */}
-                      <div className="space-y-1.5 pt-1">
-                        <div className="text-[11px] font-bold uppercase tracking-wider text-[#DE1B76]">
-                          Key Actives & Botanical Extracts:
-                        </div>
-                        <div className="flex flex-wrap gap-1.5">
-                          {product.keyIngredients.map((ing, i) => (
-                            <span
-                              key={i}
-                              className="text-[11px] bg-stone-900 hover:bg-stone-800 text-stone-300 hover:text-white px-2.5 py-1 rounded-md border border-stone-800 hover:border-stone-700 transition-all duration-200 hover:scale-105 cursor-default"
-                            >
-                              {ing}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Usage Guide */}
-                      <div className="p-3 rounded-xl bg-stone-900/90 border border-stone-800 text-xs text-stone-400 group-hover:border-stone-700 transition-colors">
-                        <span className="font-semibold text-stone-200">How to use: </span>
-                        {product.usageInstructions || 'Apply gently to cleansed skin as directed by your MagKay aesthetician.'}
-                      </div>
-                    </div>
+        {/* Product Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProducts.map((product) => (
+            <div
+              key={product.id}
+              className="bg-[#14141A] rounded-2xl border border-stone-800/80 hover:border-[#DE1B76]/50 shadow-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#DE1B76]/10 group"
+            >
+              <div>
+                {/* Product Image */}
+                <div className="relative aspect-[4/3] bg-stone-900 overflow-hidden cursor-pointer" onClick={() => openDetailsModal(product)}>
+                  <ImageWithLoading
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#14141A] via-transparent to-transparent opacity-60" />
+                  
+                  {/* Category & Size Badge */}
+                  <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
+                    <span className="bg-black/70 backdrop-blur-md text-[#DE1B76] border border-[#DE1B76]/30 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md">
+                      {product.category}
+                    </span>
+                    <span className="bg-stone-900/80 backdrop-blur-md text-stone-300 border border-stone-700/60 text-[10px] font-medium px-2.5 py-1 rounded-md">
+                      {product.size}
+                    </span>
                   </div>
 
-                  {/* Quantity and Order Button */}
-                  <div className="p-6 pt-0 border-t border-stone-800/80 mt-2">
-                    <div className="pt-4 space-y-3">
-                      {/* Quantity Selector */}
-                      <div className="flex items-center justify-between text-xs">
-                        <span className="font-semibold text-stone-400">Quantity:</span>
-                        <div className="flex items-center border border-stone-700 bg-stone-900 rounded-lg overflow-hidden shadow-xs">
-                          <button
-                            onClick={() => handleQtyChange(product.id, -1)}
-                            className="px-3 py-1.5 text-stone-300 hover:text-white hover:bg-stone-800 font-bold transition-all duration-200 active:scale-90 cursor-pointer"
-                            aria-label="Decrease quantity"
-                          >
-                            -
-                          </button>
-                          <span className="px-3 py-1.5 font-mono font-bold text-white text-xs bg-stone-950/50">
-                            {qty}
-                          </span>
-                          <button
-                            onClick={() => handleQtyChange(product.id, 1)}
-                            className="px-3 py-1.5 text-stone-300 hover:text-white hover:bg-stone-800 font-bold transition-all duration-200 active:scale-90 cursor-pointer"
-                            aria-label="Increase quantity"
-                          >
-                            +
-                          </button>
-                        </div>
-                      </div>
-
-                      {/* WhatsApp Direct Order Button */}
-                      <button
-                        onClick={() => handleOrderProduct(product)}
-                        className="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white py-3 px-3 rounded-xl font-bold text-xs uppercase tracking-wider shadow-lg hover:shadow-xl hover:shadow-[#25D366]/30 transition-all duration-300 hover:scale-105 hover:-translate-y-0.5 cursor-pointer whitespace-nowrap group/order"
-                      >
-                        <WhatsAppIcon className="w-4 h-4 text-white shrink-0 transition-transform duration-300 group-hover/order:scale-110" />
-                        <span>Order on WhatsApp (₦{(product.priceNaira * qty).toLocaleString()})</span>
-                      </button>
-                    </div>
+                  {/* Stock Tag */}
+                  <div className="absolute bottom-3 right-3">
+                    <span className="bg-emerald-950/80 text-emerald-300 border border-emerald-500/30 text-[10px] font-semibold px-2 py-0.5 rounded-full flex items-center gap-1">
+                      <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+                      <span>In Stock at Salon</span>
+                    </span>
                   </div>
-
                 </div>
-              );
-            })}
-          </div>
-        )}
 
-        {/* Quality & Safety Assurance Card */}
-        <div className="mt-12 bg-[#17171F] rounded-3xl p-6 sm:p-8 border border-stone-800 text-white text-left grid grid-cols-1 md:grid-cols-3 gap-6 shadow-xl">
-          <div className="flex items-start gap-3.5">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-500/30">
-              <ShieldCheck className="w-5 h-5" />
+                {/* Content */}
+                <div className="p-5 space-y-3">
+                  <h3 
+                    onClick={() => openDetailsModal(product)}
+                    className="font-serif text-lg sm:text-xl font-bold text-white group-hover:text-[#DE1B76] transition-colors cursor-pointer line-clamp-2"
+                  >
+                    {product.name}
+                  </h3>
+
+                  <p className="text-xs text-stone-400 line-clamp-2 leading-relaxed">
+                    {product.tagline}
+                  </p>
+
+                  {/* Key Benefits List */}
+                  <div className="space-y-1.5 pt-2 border-t border-stone-800/60">
+                    {product.benefits.slice(0, 2).map((benefit, idx) => (
+                      <div key={idx} className="flex items-start gap-2 text-xs text-stone-300">
+                        <Check className="w-3.5 h-3.5 text-[#DE1B76] shrink-0 mt-0.5" />
+                        <span className="line-clamp-1">{benefit}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Footer & Actions */}
+              <div className="p-5 pt-0 border-t border-stone-800/40 space-y-3">
+                <div className="flex items-center justify-between pt-3">
+                  <div>
+                    <span className="text-[10px] text-stone-400 uppercase tracking-wider block">Price</span>
+                    <span className="text-lg font-bold text-white font-mono">
+                      ₦{product.priceNaira.toLocaleString()}
+                    </span>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => openDetailsModal(product)}
+                    className="text-xs font-semibold text-stone-300 hover:text-white underline underline-offset-4 cursor-pointer"
+                  >
+                    View Details
+                  </button>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => handleOrderWhatsApp(product, 1)}
+                  className="w-full py-2.5 px-4 bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/30 transition-all duration-200 cursor-pointer"
+                >
+                  <WhatsAppIcon className="w-4 h-4 fill-white" />
+                  <span>{addedAnimationId === product.id ? 'Opening WhatsApp...' : 'Order on WhatsApp'}</span>
+                </button>
+              </div>
             </div>
+          ))}
+        </div>
+
+        {/* Authenticity Guarantee Banner */}
+        <div className="mt-12 bg-gradient-to-r from-[#171720] via-[#1F1722] to-[#171720] rounded-2xl p-6 sm:p-8 border border-stone-800 shadow-xl">
+          <div className="flex flex-col sm:flex-row items-center gap-6 justify-between text-center sm:text-left">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-[#DE1B76]/20 text-[#DE1B76] flex items-center justify-center shrink-0 border border-[#DE1B76]/30">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+              <div>
+                <h4 className="font-serif text-lg font-bold text-white">100% Authentic MagKay Guarantee</h4>
+                <p className="text-xs sm:text-sm text-stone-400 mt-0.5">
+                  Pick up in-person at KM 5 LASU-Isheri Road or request delivery throughout Lagos State.
+                </p>
+              </div>
+            </div>
+
+            <a
+              href={`tel:${SPA_INFO.phonePrimary}`}
+              className="px-5 py-2.5 bg-stone-800 hover:bg-stone-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider shrink-0 transition-colors border border-stone-700"
+            >
+              Call for Product Inquiries
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Product Details Modal */}
+      {activeModalProduct && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
+          <div 
+            className="bg-[#171720] border border-stone-700 rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-6 space-y-6 shadow-2xl relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setActiveModalProduct(null)}
+              className="absolute top-4 right-4 p-2 text-stone-400 hover:text-white rounded-full bg-stone-800 hover:bg-stone-700 transition-colors cursor-pointer"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Modal Image */}
+            <div className="relative aspect-video rounded-xl overflow-hidden bg-stone-900">
+              <ImageWithLoading
+                src={activeModalProduct.image}
+                alt={activeModalProduct.name}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute top-3 left-3">
+                <span className="bg-black/80 text-[#DE1B76] text-xs font-bold px-2.5 py-1 rounded-md border border-[#DE1B76]/40 uppercase tracking-wider">
+                  {activeModalProduct.category}
+                </span>
+              </div>
+            </div>
+
+            {/* Header */}
             <div>
-              <h4 className="font-bold text-sm text-white">Safe & Tested Ingredients</h4>
-              <p className="text-xs text-stone-400 mt-1 leading-relaxed">
-                Zero harmful mercury, steroids, or hydroquinone. Formulated with skin-loving botanical extracts and certified vitamins.
+              <h3 className="font-serif text-2xl font-bold text-white">
+                {activeModalProduct.name}
+              </h3>
+              <p className="text-xs text-[#DE1B76] font-semibold mt-1">
+                Size: {activeModalProduct.size} • Suitable for: {activeModalProduct.skinType}
+              </p>
+              <div className="text-xl font-bold text-white font-mono mt-2">
+                ₦{activeModalProduct.priceNaira.toLocaleString()}
+              </div>
+            </div>
+
+            {/* Description */}
+            <div className="space-y-2">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-stone-400">Formula Details</h4>
+              <p className="text-xs sm:text-sm text-stone-300 leading-relaxed">
+                {activeModalProduct.description}
               </p>
             </div>
-          </div>
 
-          <div className="flex items-start gap-3.5">
-            <div className="w-10 h-10 rounded-xl bg-[#DE1B76]/20 text-[#DE1B76] flex items-center justify-center shrink-0 border border-[#DE1B76]/30">
-              <Flower2 className="w-5 h-5" />
+            {/* Key Ingredients */}
+            <div className="space-y-2">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-stone-400">Key Ingredients</h4>
+              <div className="flex flex-wrap gap-1.5">
+                {activeModalProduct.keyIngredients.map((ing, i) => (
+                  <span key={i} className="px-2.5 py-1 bg-stone-800/90 text-stone-300 text-[11px] rounded-lg border border-stone-700/60">
+                    {ing}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div>
-              <h4 className="font-bold text-sm text-white">Nationwide Delivery & Pickup</h4>
-              <p className="text-xs text-stone-400 mt-1 leading-relaxed">
-                Pick up at our LASU-Isheri store or order express dispatch to any state in Nigeria via trustworthy logistics partners.
-              </p>
-            </div>
-          </div>
 
-          <div className="flex items-start gap-3.5">
-            <div className="w-10 h-10 rounded-xl bg-pink-500/20 text-pink-400 flex items-center justify-center shrink-0 border border-pink-500/30">
-              <Heart className="w-5 h-5" />
+            {/* Benefits */}
+            <div className="space-y-2">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-stone-400">Benefits & Results</h4>
+              <div className="space-y-1.5">
+                {activeModalProduct.benefits.map((b, i) => (
+                  <div key={i} className="flex items-start gap-2 text-xs text-stone-300">
+                    <Check className="w-3.5 h-3.5 text-[#DE1B76] shrink-0 mt-0.5" />
+                    <span>{b}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div>
-              <h4 className="font-bold text-sm text-white">Personalized Skincare Consultation</h4>
-              <p className="text-xs text-stone-400 mt-1 leading-relaxed">
-                Unsure which routine fits your skin? Chat with our licensed aesthetician for custom recommendations before purchasing.
-              </p>
+
+            {/* Quantity Selector & Order */}
+            <div className="pt-4 border-t border-stone-800 space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-semibold text-stone-300">Quantity</span>
+                <div className="flex items-center gap-3 bg-stone-900 px-3 py-1.5 rounded-xl border border-stone-800">
+                  <button
+                    onClick={() => setOrderQuantity(Math.max(1, orderQuantity - 1))}
+                    className="text-stone-400 hover:text-white font-bold text-sm px-1 cursor-pointer"
+                  >
+                    -
+                  </button>
+                  <span className="text-xs font-bold text-white w-4 text-center">{orderQuantity}</span>
+                  <button
+                    onClick={() => setOrderQuantity(orderQuantity + 1)}
+                    className="text-stone-400 hover:text-white font-bold text-sm px-1 cursor-pointer"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between text-xs text-stone-400">
+                <span>Total Amount</span>
+                <span className="text-base font-bold text-white font-mono">
+                  ₦{(activeModalProduct.priceNaira * orderQuantity).toLocaleString()}
+                </span>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => {
+                  handleOrderWhatsApp(activeModalProduct, orderQuantity);
+                  setActiveModalProduct(null);
+                }}
+                className="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/40 cursor-pointer"
+              >
+                <WhatsAppIcon className="w-4 h-4 fill-white" />
+                <span>Confirm Order via WhatsApp (₦{(activeModalProduct.priceNaira * orderQuantity).toLocaleString()})</span>
+              </button>
             </div>
           </div>
         </div>
-
-      </div>
+      )}
     </section>
   );
 };
